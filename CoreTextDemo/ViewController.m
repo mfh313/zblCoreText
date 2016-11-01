@@ -7,8 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "MFCoreTextView.h"
 
 @interface ViewController ()
+{
+    MFCoreTextView *_richTextView;
+}
 
 @end
 
@@ -16,7 +20,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    _richTextView = [[MFCoreTextView alloc] initWithFrame:CGRectMake(50, 50, 200, 200)];
+    _richTextView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:_richTextView];
 }
 
 

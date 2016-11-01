@@ -13,6 +13,11 @@
 		AC8A7F1C1DC837F000328CC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8A7F1A1DC837F000328CC3 /* Main.storyboard */; };
 		AC8A7F1E1DC837F000328CC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC8A7F1D1DC837F000328CC3 /* Assets.xcassets */; };
 		AC8A7F211DC837F000328CC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8A7F1F1DC837F000328CC3 /* LaunchScreen.storyboard */; };
+		AC8A7F2A1DC8472200328CC3 /* MFCoreTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F291DC8472200328CC3 /* MFCoreTextView.m */; };
+		AC8A7F2D1DC865F700328CC3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8A7F2C1DC865F700328CC3 /* CoreText.framework */; };
+		AC8A7F301DC865FF00328CC3 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8A7F2E1DC865FF00328CC3 /* CoreFoundation.framework */; };
+		AC8A7F311DC865FF00328CC3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8A7F2F1DC865FF00328CC3 /* Foundation.framework */; };
+		AC8A7F331DC8660B00328CC3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8A7F321DC8660B00328CC3 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,12 @@
 		AC8A7F1D1DC837F000328CC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC8A7F201DC837F000328CC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC8A7F221DC837F000328CC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC8A7F281DC8472200328CC3 /* MFCoreTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCoreTextView.h; sourceTree = "<group>"; };
+		AC8A7F291DC8472200328CC3 /* MFCoreTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFCoreTextView.m; sourceTree = "<group>"; };
+		AC8A7F2C1DC865F700328CC3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		AC8A7F2E1DC865FF00328CC3 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		AC8A7F2F1DC865FF00328CC3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AC8A7F321DC8660B00328CC3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +44,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC8A7F331DC8660B00328CC3 /* UIKit.framework in Frameworks */,
+				AC8A7F301DC865FF00328CC3 /* CoreFoundation.framework in Frameworks */,
+				AC8A7F311DC865FF00328CC3 /* Foundation.framework in Frameworks */,
+				AC8A7F2D1DC865F700328CC3 /* CoreText.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +59,7 @@
 			children = (
 				AC8A7F101DC837F000328CC3 /* CoreTextDemo */,
 				AC8A7F0F1DC837F000328CC3 /* Products */,
+				AC8A7F2B1DC865F700328CC3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +78,8 @@
 				AC8A7F151DC837F000328CC3 /* AppDelegate.m */,
 				AC8A7F171DC837F000328CC3 /* ViewController.h */,
 				AC8A7F181DC837F000328CC3 /* ViewController.m */,
+				AC8A7F281DC8472200328CC3 /* MFCoreTextView.h */,
+				AC8A7F291DC8472200328CC3 /* MFCoreTextView.m */,
 				AC8A7F1A1DC837F000328CC3 /* Main.storyboard */,
 				AC8A7F1D1DC837F000328CC3 /* Assets.xcassets */,
 				AC8A7F1F1DC837F000328CC3 /* LaunchScreen.storyboard */,
@@ -77,6 +95,17 @@
 				AC8A7F121DC837F000328CC3 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AC8A7F2B1DC865F700328CC3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AC8A7F321DC8660B00328CC3 /* UIKit.framework */,
+				AC8A7F2E1DC865FF00328CC3 /* CoreFoundation.framework */,
+				AC8A7F2F1DC865FF00328CC3 /* Foundation.framework */,
+				AC8A7F2C1DC865F700328CC3 /* CoreText.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +183,7 @@
 				AC8A7F191DC837F000328CC3 /* ViewController.m in Sources */,
 				AC8A7F161DC837F000328CC3 /* AppDelegate.m in Sources */,
 				AC8A7F131DC837F000328CC3 /* main.m in Sources */,
+				AC8A7F2A1DC8472200328CC3 /* MFCoreTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +249,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -261,7 +291,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -275,6 +305,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2C97V99SA2;
 				INFOPLIST_FILE = CoreTextDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CoreTextDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -287,6 +318,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2C97V99SA2;
 				INFOPLIST_FILE = CoreTextDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CoreTextDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -312,6 +344,7 @@
 				AC8A7F271DC837F000328CC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
