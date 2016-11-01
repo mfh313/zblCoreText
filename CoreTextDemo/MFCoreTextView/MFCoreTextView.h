@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+//绘制九宫格
+
 @interface MFCoreTextView : UIView
+{
+    NSMutableArray *_itemViews;       //自定义的view
+}
 
 @end

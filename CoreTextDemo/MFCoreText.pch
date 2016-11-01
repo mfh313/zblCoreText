@@ -1,0 +1,18 @@
+//
+//  MFCoreText.pch
+//  CoreTextDemo
+//
+//  Created by EEKA on 2016/11/1.
+//  Copyright © 2016年 EEKA. All rights reserved.
+//
+
+#ifndef MFCoreText_pch
+#define MFCoreText_pch
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "CoreText/CoreText.h"
+
+#define RGB(A, B, C)    [UIColor colorWithRed:A/255.0 green:B/255.0 blue:C/255.0 alpha:1.0]
+
+#endif /* MFCoreText_pch */

@@ -13,11 +13,22 @@
 		AC8A7F1C1DC837F000328CC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8A7F1A1DC837F000328CC3 /* Main.storyboard */; };
 		AC8A7F1E1DC837F000328CC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC8A7F1D1DC837F000328CC3 /* Assets.xcassets */; };
 		AC8A7F211DC837F000328CC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8A7F1F1DC837F000328CC3 /* LaunchScreen.storyboard */; };
-		AC8A7F2A1DC8472200328CC3 /* MFCoreTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F291DC8472200328CC3 /* MFCoreTextView.m */; };
 		AC8A7F2D1DC865F700328CC3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8A7F2C1DC865F700328CC3 /* CoreText.framework */; };
 		AC8A7F301DC865FF00328CC3 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8A7F2E1DC865FF00328CC3 /* CoreFoundation.framework */; };
 		AC8A7F311DC865FF00328CC3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8A7F2F1DC865FF00328CC3 /* Foundation.framework */; };
 		AC8A7F331DC8660B00328CC3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8A7F321DC8660B00328CC3 /* UIKit.framework */; };
+		AC8A7F3F1DC88F6300328CC3 /* diagnosticData_1.json in Resources */ = {isa = PBXBuildFile; fileRef = AC8A7F3B1DC88F6300328CC3 /* diagnosticData_1.json */; };
+		AC8A7F401DC88F6300328CC3 /* diagnostisImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AC8A7F3C1DC88F6300328CC3 /* diagnostisImage.bundle */; };
+		AC8A7F411DC88F6300328CC3 /* MFCustomerDiagnosticLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F3E1DC88F6300328CC3 /* MFCustomerDiagnosticLogic.m */; };
+		AC8A7F441DC88FBE00328CC3 /* MFDiagnosticModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F431DC88FBE00328CC3 /* MFDiagnosticModel.m */; };
+		AC8A7F461DC890A200328CC3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8A7F451DC890A200328CC3 /* CoreGraphics.framework */; };
+		AC8A7F4D1DC891CE00328CC3 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F491DC891CE00328CC3 /* NSObject+YYModel.m */; };
+		AC8A7F4E1DC891CE00328CC3 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F4B1DC891CE00328CC3 /* YYClassInfo.m */; };
+		AC8A7F511DC8930E00328CC3 /* NSString+Width.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F501DC8930E00328CC3 /* NSString+Width.m */; };
+		AC8A7F5E1DC8964800328CC3 /* MFCoreTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F571DC8964800328CC3 /* MFCoreTextView.m */; };
+		AC8A7F5F1DC8964800328CC3 /* MFFrameParserConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F591DC8964800328CC3 /* MFFrameParserConfig.m */; };
+		AC8A7F601DC8964800328CC3 /* MFTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F5B1DC8964800328CC3 /* MFTextAttachment.m */; };
+		AC8A7F611DC8964800328CC3 /* MFTextRunDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F5D1DC8964800328CC3 /* MFTextRunDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,12 +42,33 @@
 		AC8A7F1D1DC837F000328CC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC8A7F201DC837F000328CC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC8A7F221DC837F000328CC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AC8A7F281DC8472200328CC3 /* MFCoreTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCoreTextView.h; sourceTree = "<group>"; };
-		AC8A7F291DC8472200328CC3 /* MFCoreTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFCoreTextView.m; sourceTree = "<group>"; };
 		AC8A7F2C1DC865F700328CC3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		AC8A7F2E1DC865FF00328CC3 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		AC8A7F2F1DC865FF00328CC3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AC8A7F321DC8660B00328CC3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AC8A7F3B1DC88F6300328CC3 /* diagnosticData_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = diagnosticData_1.json; sourceTree = "<group>"; };
+		AC8A7F3C1DC88F6300328CC3 /* diagnostisImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = diagnostisImage.bundle; sourceTree = "<group>"; };
+		AC8A7F3D1DC88F6300328CC3 /* MFCustomerDiagnosticLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCustomerDiagnosticLogic.h; sourceTree = "<group>"; };
+		AC8A7F3E1DC88F6300328CC3 /* MFCustomerDiagnosticLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFCustomerDiagnosticLogic.m; sourceTree = "<group>"; };
+		AC8A7F421DC88FBE00328CC3 /* MFDiagnosticModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDiagnosticModel.h; sourceTree = "<group>"; };
+		AC8A7F431DC88FBE00328CC3 /* MFDiagnosticModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDiagnosticModel.m; sourceTree = "<group>"; };
+		AC8A7F451DC890A200328CC3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AC8A7F481DC891CE00328CC3 /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
+		AC8A7F491DC891CE00328CC3 /* NSObject+YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYModel.m"; sourceTree = "<group>"; };
+		AC8A7F4A1DC891CE00328CC3 /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
+		AC8A7F4B1DC891CE00328CC3 /* YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYClassInfo.m; sourceTree = "<group>"; };
+		AC8A7F4C1DC891CE00328CC3 /* YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYModel.h; sourceTree = "<group>"; };
+		AC8A7F4F1DC8930E00328CC3 /* NSString+Width.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Width.h"; sourceTree = "<group>"; };
+		AC8A7F501DC8930E00328CC3 /* NSString+Width.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Width.m"; sourceTree = "<group>"; };
+		AC8A7F561DC8964800328CC3 /* MFCoreTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCoreTextView.h; sourceTree = "<group>"; };
+		AC8A7F571DC8964800328CC3 /* MFCoreTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFCoreTextView.m; sourceTree = "<group>"; };
+		AC8A7F581DC8964800328CC3 /* MFFrameParserConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFFrameParserConfig.h; sourceTree = "<group>"; };
+		AC8A7F591DC8964800328CC3 /* MFFrameParserConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFFrameParserConfig.m; sourceTree = "<group>"; };
+		AC8A7F5A1DC8964800328CC3 /* MFTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFTextAttachment.h; sourceTree = "<group>"; };
+		AC8A7F5B1DC8964800328CC3 /* MFTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFTextAttachment.m; sourceTree = "<group>"; };
+		AC8A7F5C1DC8964800328CC3 /* MFTextRunDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFTextRunDelegate.h; sourceTree = "<group>"; };
+		AC8A7F5D1DC8964800328CC3 /* MFTextRunDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFTextRunDelegate.m; sourceTree = "<group>"; };
+		AC8A7F621DC896BB00328CC3 /* MFCoreText.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFCoreText.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC8A7F461DC890A200328CC3 /* CoreGraphics.framework in Frameworks */,
 				AC8A7F331DC8660B00328CC3 /* UIKit.framework in Frameworks */,
 				AC8A7F301DC865FF00328CC3 /* CoreFoundation.framework in Frameworks */,
 				AC8A7F311DC865FF00328CC3 /* Foundation.framework in Frameworks */,
@@ -76,14 +109,15 @@
 			children = (
 				AC8A7F141DC837F000328CC3 /* AppDelegate.h */,
 				AC8A7F151DC837F000328CC3 /* AppDelegate.m */,
+				AC8A7F3A1DC88F6300328CC3 /* data */,
 				AC8A7F171DC837F000328CC3 /* ViewController.h */,
 				AC8A7F181DC837F000328CC3 /* ViewController.m */,
-				AC8A7F281DC8472200328CC3 /* MFCoreTextView.h */,
-				AC8A7F291DC8472200328CC3 /* MFCoreTextView.m */,
+				AC8A7F551DC8964800328CC3 /* MFCoreTextView */,
 				AC8A7F1A1DC837F000328CC3 /* Main.storyboard */,
 				AC8A7F1D1DC837F000328CC3 /* Assets.xcassets */,
 				AC8A7F1F1DC837F000328CC3 /* LaunchScreen.storyboard */,
 				AC8A7F221DC837F000328CC3 /* Info.plist */,
+				AC8A7F621DC896BB00328CC3 /* MFCoreText.pch */,
 				AC8A7F111DC837F000328CC3 /* Supporting Files */,
 			);
 			path = CoreTextDemo;
@@ -100,12 +134,56 @@
 		AC8A7F2B1DC865F700328CC3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC8A7F451DC890A200328CC3 /* CoreGraphics.framework */,
 				AC8A7F321DC8660B00328CC3 /* UIKit.framework */,
 				AC8A7F2E1DC865FF00328CC3 /* CoreFoundation.framework */,
 				AC8A7F2F1DC865FF00328CC3 /* Foundation.framework */,
 				AC8A7F2C1DC865F700328CC3 /* CoreText.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AC8A7F3A1DC88F6300328CC3 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				AC8A7F471DC891CE00328CC3 /* YYModel */,
+				AC8A7F3B1DC88F6300328CC3 /* diagnosticData_1.json */,
+				AC8A7F3C1DC88F6300328CC3 /* diagnostisImage.bundle */,
+				AC8A7F3D1DC88F6300328CC3 /* MFCustomerDiagnosticLogic.h */,
+				AC8A7F3E1DC88F6300328CC3 /* MFCustomerDiagnosticLogic.m */,
+				AC8A7F421DC88FBE00328CC3 /* MFDiagnosticModel.h */,
+				AC8A7F431DC88FBE00328CC3 /* MFDiagnosticModel.m */,
+				AC8A7F4F1DC8930E00328CC3 /* NSString+Width.h */,
+				AC8A7F501DC8930E00328CC3 /* NSString+Width.m */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		AC8A7F471DC891CE00328CC3 /* YYModel */ = {
+			isa = PBXGroup;
+			children = (
+				AC8A7F481DC891CE00328CC3 /* NSObject+YYModel.h */,
+				AC8A7F491DC891CE00328CC3 /* NSObject+YYModel.m */,
+				AC8A7F4A1DC891CE00328CC3 /* YYClassInfo.h */,
+				AC8A7F4B1DC891CE00328CC3 /* YYClassInfo.m */,
+				AC8A7F4C1DC891CE00328CC3 /* YYModel.h */,
+			);
+			path = YYModel;
+			sourceTree = "<group>";
+		};
+		AC8A7F551DC8964800328CC3 /* MFCoreTextView */ = {
+			isa = PBXGroup;
+			children = (
+				AC8A7F561DC8964800328CC3 /* MFCoreTextView.h */,
+				AC8A7F571DC8964800328CC3 /* MFCoreTextView.m */,
+				AC8A7F581DC8964800328CC3 /* MFFrameParserConfig.h */,
+				AC8A7F591DC8964800328CC3 /* MFFrameParserConfig.m */,
+				AC8A7F5A1DC8964800328CC3 /* MFTextAttachment.h */,
+				AC8A7F5B1DC8964800328CC3 /* MFTextAttachment.m */,
+				AC8A7F5C1DC8964800328CC3 /* MFTextRunDelegate.h */,
+				AC8A7F5D1DC8964800328CC3 /* MFTextRunDelegate.m */,
+			);
+			path = MFCoreTextView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +245,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC8A7F401DC88F6300328CC3 /* diagnostisImage.bundle in Resources */,
+				AC8A7F3F1DC88F6300328CC3 /* diagnosticData_1.json in Resources */,
 				AC8A7F211DC837F000328CC3 /* LaunchScreen.storyboard in Resources */,
 				AC8A7F1E1DC837F000328CC3 /* Assets.xcassets in Resources */,
 				AC8A7F1C1DC837F000328CC3 /* Main.storyboard in Resources */,
@@ -180,10 +260,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC8A7F5E1DC8964800328CC3 /* MFCoreTextView.m in Sources */,
+				AC8A7F4D1DC891CE00328CC3 /* NSObject+YYModel.m in Sources */,
 				AC8A7F191DC837F000328CC3 /* ViewController.m in Sources */,
 				AC8A7F161DC837F000328CC3 /* AppDelegate.m in Sources */,
+				AC8A7F511DC8930E00328CC3 /* NSString+Width.m in Sources */,
+				AC8A7F611DC8964800328CC3 /* MFTextRunDelegate.m in Sources */,
+				AC8A7F411DC88F6300328CC3 /* MFCustomerDiagnosticLogic.m in Sources */,
 				AC8A7F131DC837F000328CC3 /* main.m in Sources */,
-				AC8A7F2A1DC8472200328CC3 /* MFCoreTextView.m in Sources */,
+				AC8A7F5F1DC8964800328CC3 /* MFFrameParserConfig.m in Sources */,
+				AC8A7F601DC8964800328CC3 /* MFTextAttachment.m in Sources */,
+				AC8A7F4E1DC891CE00328CC3 /* YYClassInfo.m in Sources */,
+				AC8A7F441DC88FBE00328CC3 /* MFDiagnosticModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +392,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2C97V99SA2;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_PREFIX_HEADER = CoreTextDemo/MFCoreText.pch;
 				INFOPLIST_FILE = CoreTextDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -317,6 +407,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2C97V99SA2;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_PREFIX_HEADER = CoreTextDemo/MFCoreText.pch;
 				INFOPLIST_FILE = CoreTextDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

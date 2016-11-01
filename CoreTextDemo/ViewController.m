@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "MFCoreTextView.h"
+#import "MFCustomerDiagnosticLogic.h"
 
 @interface ViewController ()
 {
@@ -21,9 +22,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _richTextView = [[MFCoreTextView alloc] initWithFrame:CGRectMake(50, 50, 200, 200)];
+    NSMutableArray *datas = [[MFCustomerDiagnosticLogic sharedLogic] diagnosticQuestions];
+
+    
+    _richTextView = [[MFCoreTextView alloc] initWithFrame:CGRectMake(10, 50, CGRectGetWidth(self.view.bounds)-20, 200)];
     _richTextView.backgroundColor = [UIColor redColor];
     [self.view addSubview:_richTextView];
+    
+    
 }
 
 

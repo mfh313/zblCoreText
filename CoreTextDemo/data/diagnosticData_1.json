@@ -1,0 +1,868 @@
+{
+    "counts": 19,
+    "questions": [
+                  {
+                  "questionsNumber": "1",
+                  "titleDescription": "观察顾客的脸部轮廓更偏向于哪一种？",
+                  "itemType": "image",
+                  "columnCount": 3,
+                  "maxSelectedCount": 1,
+                  "minSelectedCount": 1,
+                  "contentImageWidth": 170,
+                  "contentImageHeight": 215,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "1A",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/1A@2x.png",
+                               "contentDescription": "A"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "1B",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/1B@2x.png",
+                               "contentDescription": "B"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "1C",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/1C@2x.png",
+                               "contentDescription": "C"
+                               },
+                               {
+                               "realMatch": "D",
+                               "imageName": "1D",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/1D@2x.png",
+                               "contentDescription": "D"
+                               },
+                               {
+                               "realMatch": "E",
+                               "imageName": "1E",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/1E@2x.png",
+                               "contentDescription": "E"
+                               },
+                               {
+                               "realMatch": "F",
+                               "imageName": "1F",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/1F@2x.png",
+                               "contentDescription": "F"
+                               }
+                               ]
+                  },
+                  {
+                  "questionsNumber": "2",
+                  "titleDescription": "观察顾客的眉眼形状更倾向哪一种？",
+                  "itemType": "image",
+                  "columnCount": 3,
+                  "maxSelectedCount": 1,
+                  "minSelectedCount": 1,
+                  "contentImageWidth": 188,
+                  "contentImageHeight": 90,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "2A",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/2A@2x.png",
+                               "contentDescription": "A、眉型较直（挑眉）"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "2B",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/2B@2x.png",
+                               "contentDescription": "B、平眉"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "2C",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/2C@2x.png",
+                               "contentDescription": "C、眉型较曲（柳叶眉）"
+                               }
+                               ]
+                  },
+                  {
+                  "questionsNumber": "3",
+                  "titleDescription": "观察顾客的发型更接近下列哪一种？",
+                  "itemType": "image",
+                  "columnCount": 4,
+                  "maxSelectedCount": 1,
+                  "minSelectedCount": 1,
+                  "contentImageWidth": 170,
+                  "contentImageHeight": 170,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "3A",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/3A@2x.png",
+                               "contentDescription": "A"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "3B",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/3B@2x.png",
+                               "contentDescription": "B"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "3C",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/3C@2x.png",
+                               "contentDescription": "C"
+                               },
+                               {
+                               "realMatch": "D",
+                               "imageName": "3D",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/3D@2x.png",
+                               "contentDescription": "D"
+                               },
+                               {
+                               "realMatch": "E",
+                               "imageName": "3E",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/3E@2x.png",
+                               "contentDescription": "E"
+                               },
+                               {
+                               "realMatch": "F",
+                               "imageName": "3F",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/3F@2x.png",
+                               "contentDescription": "F"
+                               },
+                               {
+                               "realMatch": "G",
+                               "imageName": "3G",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/3G@2x.png",
+                               "contentDescription": "G"
+                               },
+                               {
+                               "realMatch": "H",
+                               "imageName": "3H",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/3H@2x.png",
+                               "contentDescription": "H"
+                               },
+                               {
+                               "realMatch": "I",
+                               "imageName": "3I",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/3I@2x.png",
+                               "contentDescription": "I"
+                               },
+                               {
+                               "realMatch": "J",
+                               "imageName": "3J",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/3J@2x.png",
+                               "contentDescription": "J"
+                               },
+                               {
+                               "realMatch": "K",
+                               "imageName": "3K",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/3K@2x.png",
+                               "contentDescription": "K"
+                               },
+                               {
+                               "realMatch": "L",
+                               "imageName": "3L",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/3L@2x.png",
+                               "contentDescription": "L"
+                               },
+                               {
+                               "realMatch": "M",
+                               "imageName": "3M",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/3M@2x.png",
+                               "contentDescription": "M"
+                               },
+                               {
+                               "realMatch": "N",
+                               "imageName": "3N",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/3N@2x.png",
+                               "contentDescription": "N"
+                               },
+                               {
+                               "realMatch": "O",
+                               "imageName": "3O",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/3O@2x.png",
+                               "contentDescription": "O"
+                               }
+                               ]
+                  },
+                  {
+                  "questionsNumber": "4",
+                  "titleDescription": "观察顾客眼神倾向于哪一种？",
+                  "itemType": "image",
+                  "columnCount": 3,
+                  "maxSelectedCount": 1,
+                  "minSelectedCount": 1,
+                  "contentImageWidth": 164,
+                  "contentImageHeight": 215,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "4A",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/4A@2x.png",
+                               "contentDescription": "A、眼神坚定、直接"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "4B",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/4B@2x.png",
+                               "contentDescription": "B、眼神温和、平稳"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "4C",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/4C@2x.png",
+                               "contentDescription": "C、眼神温柔、妩媚"
+                               }
+                               ]
+                  },
+                  {
+                  "questionsNumber": "5",
+                  "titleDescription": "朋友对您的评价倾向于下面哪一种？",
+                  "itemType": "string",
+                  "columnCount": 1,
+                  "maxSelectedCount": 1,
+                  "minSelectedCount": 1,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "A、干练利落，有领导风范"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "B、耐心倾听，慢条斯理"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "C、适中，介于A、B之间"
+                               }
+                               ]
+                  },
+                  {
+                  "questionsNumber": "6",
+                  "titleDescription": "观察顾客说话时语调倾向于下面哪一种？",
+                  "itemType": "string",
+                  "columnCount": 1,
+                  "maxSelectedCount": 1,
+                  "minSelectedCount": 1,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "A、语调铿锵有力，不啰嗦"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "B、语调轻柔，好商量"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "C、适中，介于A、B之间"
+                               }
+                               ]
+                  },
+                  {
+                  "questionsNumber": "7",
+                  "titleDescription": "用色卡测一测顾客的肤色深浅？",
+                  "itemType": "string",
+                  "columnCount": 1,
+                  "maxSelectedCount": 1,
+                  "minSelectedCount": 1,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "A、肤色白皙（色卡号8.0）"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "B、肤色适中（色卡号7.5）"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "C、肤色偏深（色卡号6.5、5.5）"
+                               }
+                               ]
+                  },
+                  {
+                  "questionsNumber": "8",
+                  "titleDescription": "观察顾客的发色更倾向于下列哪一种？",
+                  "itemType": "image",
+                  "columnCount": 3,
+                  "maxSelectedCount": 1,
+                  "minSelectedCount": 1,
+                  "contentImageWidth": 170,
+                  "contentImageHeight": 170,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "8A",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/8A@2x.png",
+                               "contentDescription": "A、李子红"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "8B",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/8B@2x.png",
+                               "contentDescription": "B、蓝紫"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "8C",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/8C@2x.png",
+                               "contentDescription": "C、灰黑"
+                               },
+                               {
+                               "realMatch": "D",
+                               "imageName": "8D",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/8D@2x.png",
+                               "contentDescription": "D、纯黑"
+                               },
+                               {
+                               "realMatch": "E",
+                               "imageName": "8E",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/8E@2x.png",
+                               "contentDescription": "E、自然黑"
+                               },
+                               {
+                               "realMatch": "F",
+                               "imageName": "8F",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/8F@2x.png",
+                               "contentDescription": "F、棕黑色"
+                               },
+                               {
+                               "realMatch": "G",
+                               "imageName": "8G",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/8G@2x.png",
+                               "contentDescription": "G、棕色"
+                               },
+                               {
+                               "realMatch": "H",
+                               "imageName": "8H",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/8H@2x.png",
+                               "contentDescription": "H、金褐色"
+                               },
+                               {
+                               "realMatch": "I",
+                               "imageName": "8I",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/8I@2x.png",
+                               "contentDescription": "I、灰白"
+                               }
+                               ]
+                  },
+                  {
+                  "questionsNumber": "9",
+                  "titleDescription": "试一试您穿着下列哪一组颜色的服装更精神，脸色更好看？（最多可以选两组）",
+                  "titleDescriptionRemark": "（最多可以选两组）",
+                  "itemType": "image",
+                  "columnCount": 5,
+                  "maxSelectedCount": 2,
+                  "minSelectedCount": 1,
+                  "contentImageWidth": 170,
+                  "contentImageHeight": 170,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "L1",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/L1@2x.png",
+                               "contentDescription": "L1"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "L2",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/L2@2x.png",
+                               "contentDescription": "L2"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "L3",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/L3@2x.png",
+                               "contentDescription": "L3"
+                               },
+                               {
+                               "realMatch": "D",
+                               "imageName": "L4",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/L4@2x.png",
+                               "contentDescription": "L4"
+                               },
+                               {
+                               "realMatch": "E",
+                               "imageName": "L5",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/L5@2x.png",
+                               "contentDescription": "L5"
+                               },
+                               {
+                               "realMatch": "F",
+                               "imageName": "L6",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/L6@2x.png",
+                               "contentDescription": "L6"
+                               },
+                               {
+                               "realMatch": "G",
+                               "imageName": "N1",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/N1@2x.png",
+                               "contentDescription": "N1"
+                               },
+                               {
+                               "realMatch": "H",
+                               "imageName": "N2",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/N2@2x.png",
+                               "contentDescription": "N2"
+                               },
+                               {
+                               "realMatch": "I",
+                               "imageName": "N3",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/N3@2x.png",
+                               "contentDescription": "N3"
+                               },
+                               {
+                               "realMatch": "J",
+                               "imageName": "N4",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/N4@2x.png",
+                               "contentDescription": "N4"
+                               },
+                               {
+                               "realMatch": "K",
+                               "imageName": "N5",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/N5@2x.png",
+                               "contentDescription": "N5"
+                               },
+                               {
+                               "realMatch": "L",
+                               "imageName": "N6",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/N6@2x.png",
+                               "contentDescription": "N6"
+                               },
+                               {
+                               "realMatch": "M",
+                               "imageName": "Z1",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/Z1@2x.png",
+                               "contentDescription": "Z1"
+                               },
+                               {
+                               "realMatch": "N",
+                               "imageName": "Z2",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/Z2@2x.png",
+                               "contentDescription": "Z2"
+                               }
+                               ]
+                  },
+                  {
+                  "questionsNumber": "10",
+                  "titleDescription": "试一试哪类口红颜色使您显得更精神、头面部色彩更和谐？",
+                  "itemType": "image",
+                  "columnCount": 5,
+                  "maxSelectedCount": 1,
+                  "minSelectedCount": 1,
+                  "contentImageWidth": 100,
+                  "contentImageHeight": 180,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "10A",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/10A@2x.png",
+                               "contentDescription": "L1"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "10B",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/10B@2x.png",
+                               "contentDescription": "L2"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "10C",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/10C@2x.png",
+                               "contentDescription": "L3"
+                               },
+                               {
+                               "realMatch": "D",
+                               "imageName": "10D",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/10D@2x.png",
+                               "contentDescription": "L4"
+                               },
+                               {
+                               "realMatch": "E",
+                               "imageName": "10E",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/10E@2x.png",
+                               "contentDescription": "L5"
+                               },
+                               {
+                               "realMatch": "F",
+                               "imageName": "10F",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/10F@2x.png",
+                               "contentDescription": "Z1"
+                               },
+                               {
+                               "realMatch": "G",
+                               "imageName": "10G",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/10G@2x.png",
+                               "contentDescription": "Z2"
+                               },
+                               {
+                               "realMatch": "H",
+                               "imageName": "10H",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/10H@2x.png",
+                               "contentDescription": "Z3"
+                               },
+                               {
+                               "realMatch": "I",
+                               "imageName": "10I",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/10I@2x.png",
+                               "contentDescription": "N1"
+                               },
+                               {
+                               "realMatch": "J",
+                               "imageName": "10J",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/10J@2x.png",
+                               "contentDescription": "N2"
+                               },
+                               {
+                               "realMatch": "K",
+                               "imageName": "10K",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/10K@2x.png",
+                               "contentDescription": "N3"
+                               },
+                               {
+                               "realMatch": "L",
+                               "imageName": "10L",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/10L@2x.png",
+                               "contentDescription": "N4"
+                               }
+                               ]
+                  },
+                  {
+                  "questionsNumber": "11",
+                  "titleDescription": "观察、询问顾客通常状态下，头面部色差和五官立体度更倾向于下面哪一种：",
+                  "itemType": "image",
+                  "columnCount": 3,
+                  "maxSelectedCount": 1,
+                  "minSelectedCount": 1,
+                  "contentImageWidth": 170,
+                  "contentImageHeight": 215,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "11A",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/11A@2x.png",
+                               "contentDescription": "A、眼睛、嘴巴较大，鼻子挺，\n眉毛浓，唇色艳，立体感强\n（包括化妆后的效果）"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "11B",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/11B@2x.png",
+                               "contentDescription": "B、面部色差中等，立体感中等，\n介于A、C之间（可能有淡妆）"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "11C",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/11C@2x.png",
+                               "contentDescription": "C、眼睛、嘴巴较小，鼻梁较平，\n眉毛浅淡（通常没有化妆）"
+                               }
+                               ]
+                  },
+                  {
+                  "questionsNumber": "12",
+                  "titleDescription": "您的上装着装码数是？",
+                  "itemType": "string",
+                  "columnCount": 1,
+                  "maxSelectedCount": 1,
+                  "minSelectedCount": 1,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "A、36"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "B、38"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "C、40"
+                               },
+                               {
+                               "realMatch": "D",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "D、42"
+                               },
+                               {
+                               "realMatch": "E",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "E、44"
+                               },
+                               {
+                               "realMatch": "F",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "F、46"
+                               },
+                               {
+                               "realMatch": "G",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "G、48"
+                               }
+                               ]
+                  },
+                  {
+                  "questionsNumber": "13",
+                  "titleDescription": "您的下装着装码数是？",
+                  "itemType": "string",
+                  "columnCount": 1,
+                  "maxSelectedCount": 1,
+                  "minSelectedCount": 1,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "A、36"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "B、38"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "C、40"
+                               },
+                               {
+                               "realMatch": "D",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "D、42"
+                               },
+                               {
+                               "realMatch": "E",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "E、44"
+                               },
+                               {
+                               "realMatch": "F",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "F、46"
+                               },
+                               {
+                               "realMatch": "G",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "G、48"
+                               }
+                               ]
+                  },
+                  {
+                  "questionsNumber": "14",
+                  "titleDescription": "您不穿鞋子的净身高是？",
+                  "itemType": "string",
+                  "columnCount": 1,
+                  "maxSelectedCount": 1,
+                  "minSelectedCount": 1,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "A、155厘米以下"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "B、156-165厘米"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "C、166厘米以上"
+                               }
+                               ]
+                  },
+                  {
+                  "questionsNumber": "15",
+                  "titleDescription": "您的体重是？",
+                  "itemType": "string",
+                  "columnCount": 1,
+                  "maxSelectedCount": 1,
+                  "minSelectedCount": 1,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "A、100斤及以下"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "B、101-130斤"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "C、131斤以上"
+                               }
+                               ]
+                  },
+                  {
+                  "questionsNumber": "16",
+                  "titleDescription": "观察顾客肩部的形状倾向哪一种？",
+                  "itemType": "string",
+                  "columnCount": 1,
+                  "maxSelectedCount": 1,
+                  "minSelectedCount": 1,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "A、平肩"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "B、溜肩"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "C、中间"
+                               }
+                               ]
+                  },
+                  {
+                  "questionsNumber": "17",
+                  "titleDescription": "观察顾客的脖子长短？",
+                  "itemType": "string",
+                  "columnCount": 1,
+                  "maxSelectedCount": 1,
+                  "minSelectedCount": 1,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "A、偏长"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "B、适中"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "C、偏短"
+                               }
+                               ]
+                  },
+                  {
+                  "questionsNumber": "18",
+                  "titleDescription": "观察顾客的下巴形状？？",
+                  "itemType": "string",
+                  "columnCount": 1,
+                  "maxSelectedCount": 1,
+                  "minSelectedCount": 1,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "A、棱角分明、稳定感"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "B、圆润"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "C、瘦、尖"
+                               },
+                               {
+                               "realMatch": "D",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "D、居中"
+                               }
+                               ]
+                  },
+                  {
+                  "questionsNumber": "19",
+                  "titleDescription": "观察顾客的身体曲线与形状，更倾向以下哪一种？",
+                  "itemType": "image",
+                  "columnCount": 2,
+                  "maxSelectedCount": 1,
+                  "minSelectedCount": 1,
+                  "contentImageWidth": 172,
+                  "contentImageHeight": 300,
+                  "contents": [
+                               {
+                               "realMatch": "A",
+                               "imageName": "19A",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/19A@2x.png",
+                               "contentDescription": "A、A型\n（肩比臀部窄小，腰部以下变宽）"
+                               },
+                               {
+                               "realMatch": "B",
+                               "imageName": "19Y",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/19Y@2x.png",
+                               "contentDescription": "B、Y型\n（肩部较宽，臀部较窄）"
+                               },
+                               {
+                               "realMatch": "C",
+                               "imageName": "19X",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/19X@2x.png",
+                               "contentDescription": "C、X型\n（肩部与臀部宽窄相近，有明显细腰）"
+                               },
+                               {
+                               "realMatch": "D",
+                               "imageName": "19H",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/19H@2x.png",
+                               "contentDescription": "D、H型\n（胸、腰、臀三围差别小，腰部无明显曲线）"
+                               },
+                               {
+                               "realMatch": "E",
+                               "imageName": "19O",
+                               "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/19O@2x.png",
+                               "contentDescription": "E、O型\n（胸、腰、臀三围圆润丰满，腰腹部突出）"
+                               }
+                               ]
+                  }
+                  ]
+}
