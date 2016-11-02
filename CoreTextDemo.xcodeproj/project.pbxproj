@@ -29,6 +29,8 @@
 		AC8A7F5F1DC8964800328CC3 /* MFFrameParserConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F591DC8964800328CC3 /* MFFrameParserConfig.m */; };
 		AC8A7F601DC8964800328CC3 /* MFTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F5B1DC8964800328CC3 /* MFTextAttachment.m */; };
 		AC8A7F611DC8964800328CC3 /* MFTextRunDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F5D1DC8964800328CC3 /* MFTextRunDelegate.m */; };
+		AC8A7F651DC8992900328CC3 /* MFDiagnosticDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F641DC8992900328CC3 /* MFDiagnosticDataParser.m */; };
+		AC8A7F681DC89AA800328CC3 /* MFDiagnosticCoreTextData.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F671DC89AA800328CC3 /* MFDiagnosticCoreTextData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +71,10 @@
 		AC8A7F5C1DC8964800328CC3 /* MFTextRunDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFTextRunDelegate.h; sourceTree = "<group>"; };
 		AC8A7F5D1DC8964800328CC3 /* MFTextRunDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFTextRunDelegate.m; sourceTree = "<group>"; };
 		AC8A7F621DC896BB00328CC3 /* MFCoreText.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFCoreText.pch; sourceTree = "<group>"; };
+		AC8A7F631DC8992900328CC3 /* MFDiagnosticDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDiagnosticDataParser.h; sourceTree = "<group>"; };
+		AC8A7F641DC8992900328CC3 /* MFDiagnosticDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDiagnosticDataParser.m; sourceTree = "<group>"; };
+		AC8A7F661DC89AA800328CC3 /* MFDiagnosticCoreTextData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDiagnosticCoreTextData.h; sourceTree = "<group>"; };
+		AC8A7F671DC89AA800328CC3 /* MFDiagnosticCoreTextData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDiagnosticCoreTextData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,10 @@
 				AC8A7F3A1DC88F6300328CC3 /* data */,
 				AC8A7F171DC837F000328CC3 /* ViewController.h */,
 				AC8A7F181DC837F000328CC3 /* ViewController.m */,
+				AC8A7F661DC89AA800328CC3 /* MFDiagnosticCoreTextData.h */,
+				AC8A7F671DC89AA800328CC3 /* MFDiagnosticCoreTextData.m */,
+				AC8A7F631DC8992900328CC3 /* MFDiagnosticDataParser.h */,
+				AC8A7F641DC8992900328CC3 /* MFDiagnosticDataParser.m */,
 				AC8A7F551DC8964800328CC3 /* MFCoreTextView */,
 				AC8A7F1A1DC837F000328CC3 /* Main.storyboard */,
 				AC8A7F1D1DC837F000328CC3 /* Assets.xcassets */,
@@ -267,10 +277,12 @@
 				AC8A7F511DC8930E00328CC3 /* NSString+Width.m in Sources */,
 				AC8A7F611DC8964800328CC3 /* MFTextRunDelegate.m in Sources */,
 				AC8A7F411DC88F6300328CC3 /* MFCustomerDiagnosticLogic.m in Sources */,
+				AC8A7F681DC89AA800328CC3 /* MFDiagnosticCoreTextData.m in Sources */,
 				AC8A7F131DC837F000328CC3 /* main.m in Sources */,
 				AC8A7F5F1DC8964800328CC3 /* MFFrameParserConfig.m in Sources */,
 				AC8A7F601DC8964800328CC3 /* MFTextAttachment.m in Sources */,
 				AC8A7F4E1DC891CE00328CC3 /* YYClassInfo.m in Sources */,
+				AC8A7F651DC8992900328CC3 /* MFDiagnosticDataParser.m in Sources */,
 				AC8A7F441DC88FBE00328CC3 /* MFDiagnosticModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
