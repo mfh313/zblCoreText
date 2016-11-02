@@ -9,6 +9,10 @@
 #import "MFCoreTextView.h"
 #import <CoreText/CoreText.h>
 
+static dispatch_queue_t MFCoreTextViewGetReleaseQueue() {
+    return dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
+}
+
 @implementation MFCoreTextView
 
 -(instancetype)initWithFrame:(CGRect)frame
@@ -25,16 +29,29 @@
     return self;
 }
 
+- (void)_clearContents {
+    CGImageRef image = (__bridge_retained CGImageRef)(self.layer.contents);
+    self.layer.contents = nil;
+    if (image) {
+        dispatch_async(MFCoreTextViewGetReleaseQueue(), ^{
+            CFRelease(image);
+        });
+    }
+}
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
+    
+    if (!self.data) {
+        return;
+    }
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetTextMatrix(context, CGAffineTransformIdentity);
     CGContextTranslateCTM(context, 0, self.bounds.size.height);
     CGContextScaleCTM(context, 1.0, -1.0);
     
-    
+    CTFrameDraw(self.data.ctFrame, context);
     
     
     

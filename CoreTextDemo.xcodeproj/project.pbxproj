@@ -31,6 +31,7 @@
 		AC8A7F611DC8964800328CC3 /* MFTextRunDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F5D1DC8964800328CC3 /* MFTextRunDelegate.m */; };
 		AC8A7F651DC8992900328CC3 /* MFDiagnosticDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F641DC8992900328CC3 /* MFDiagnosticDataParser.m */; };
 		AC8A7F681DC89AA800328CC3 /* MFDiagnosticCoreTextData.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F671DC89AA800328CC3 /* MFDiagnosticCoreTextData.m */; };
+		AC9A27061DC9B74E00727660 /* MFDiagnosticCoreTextContentData.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9A27051DC9B74E00727660 /* MFDiagnosticCoreTextContentData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,8 @@
 		AC8A7F641DC8992900328CC3 /* MFDiagnosticDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDiagnosticDataParser.m; sourceTree = "<group>"; };
 		AC8A7F661DC89AA800328CC3 /* MFDiagnosticCoreTextData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDiagnosticCoreTextData.h; sourceTree = "<group>"; };
 		AC8A7F671DC89AA800328CC3 /* MFDiagnosticCoreTextData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDiagnosticCoreTextData.m; sourceTree = "<group>"; };
+		AC9A27041DC9B74E00727660 /* MFDiagnosticCoreTextContentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDiagnosticCoreTextContentData.h; sourceTree = "<group>"; };
+		AC9A27051DC9B74E00727660 /* MFDiagnosticCoreTextContentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFDiagnosticCoreTextContentData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,8 @@
 				AC8A7F181DC837F000328CC3 /* ViewController.m */,
 				AC8A7F661DC89AA800328CC3 /* MFDiagnosticCoreTextData.h */,
 				AC8A7F671DC89AA800328CC3 /* MFDiagnosticCoreTextData.m */,
+				AC9A27041DC9B74E00727660 /* MFDiagnosticCoreTextContentData.h */,
+				AC9A27051DC9B74E00727660 /* MFDiagnosticCoreTextContentData.m */,
 				AC8A7F631DC8992900328CC3 /* MFDiagnosticDataParser.h */,
 				AC8A7F641DC8992900328CC3 /* MFDiagnosticDataParser.m */,
 				AC8A7F551DC8964800328CC3 /* MFCoreTextView */,
@@ -279,6 +284,7 @@
 				AC8A7F411DC88F6300328CC3 /* MFCustomerDiagnosticLogic.m in Sources */,
 				AC8A7F681DC89AA800328CC3 /* MFDiagnosticCoreTextData.m in Sources */,
 				AC8A7F131DC837F000328CC3 /* main.m in Sources */,
+				AC9A27061DC9B74E00727660 /* MFDiagnosticCoreTextContentData.m in Sources */,
 				AC8A7F5F1DC8964800328CC3 /* MFFrameParserConfig.m in Sources */,
 				AC8A7F601DC8964800328CC3 /* MFTextAttachment.m in Sources */,
 				AC8A7F4E1DC891CE00328CC3 /* YYClassInfo.m in Sources */,

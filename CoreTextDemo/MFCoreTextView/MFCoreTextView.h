@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MFDiagnosticCoreTextData.h"
 
-//绘制九宫格
+//绘制网格
 
 @interface MFCoreTextView : UIView
 {
-    NSMutableArray *_itemViews;       //自定义的view
+    NSMutableArray *_itemViews;
 }
+
+@property (strong, nonatomic) MFDiagnosticCoreTextData * data;
 
 @end

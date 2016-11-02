@@ -10,6 +10,7 @@
 #import "MFDiagnosticCoreTextData.h"
 
 @class MFDiagnosticQuestionDataItem,MFFrameParserConfig;
+
 @interface MFDiagnosticDataParser : NSObject
 
 + (MFDiagnosticCoreTextData *)parseContent:(MFDiagnosticQuestionDataItem *)dataItem

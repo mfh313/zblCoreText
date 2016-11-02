@@ -9,6 +9,7 @@
 #import "MFTextAttachment.h"
 
 NSString *const MFTextAttachmentToken = @"\uFFFC";
+NSString *const MFTextAttachmentAttributeName = @"MFTextAttachment";
 
 @implementation MFTextAttachment
 

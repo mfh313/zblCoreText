@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 
 UIKIT_EXTERN NSString *const MFTextAttachmentToken;
+UIKIT_EXTERN NSString *const MFTextAttachmentAttributeName;
 
 @interface MFTextAttachment : NSObject<NSCopying,NSCoding>
 
