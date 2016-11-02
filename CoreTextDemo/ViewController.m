@@ -30,7 +30,7 @@
     [self.view addSubview:_richTextView];
     
     NSMutableArray *datas = [[MFCustomerDiagnosticLogic sharedLogic] diagnosticQuestions];
-    MFDiagnosticQuestionDataItem *dataItem = datas[7];
+    MFDiagnosticQuestionDataItem *dataItem = datas[1];
     
     
     MFFrameParserConfig *config = [[MFFrameParserConfig alloc] init];

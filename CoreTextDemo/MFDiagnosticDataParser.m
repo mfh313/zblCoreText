@@ -15,10 +15,52 @@
 
 @implementation MFDiagnosticDataParser
 
++ (UIFont *)uifontFromCTFontRef:(CTFontRef)ctFont {
+    CGFloat pointSize = CTFontGetSize(ctFont);
+    NSString *fontPostScriptName = (NSString *)CFBridgingRelease(CTFontCopyPostScriptName(ctFont));
+    UIFont *fontFromCTFont = [UIFont fontWithName:fontPostScriptName size:pointSize];
+    return fontFromCTFont;
+}
+
++ (CTFontRef)ctFontRefFromUIFont:(UIFont *)font {
+    CTFontRef ctfont = CTFontCreateWithName((__bridge CFStringRef)font.fontName, font.pointSize, NULL);
+    return CFAutorelease(ctfont);
+}
+
++ (NSMutableDictionary *)attributesWithConfig:(MFFrameParserConfig *)config {
+    CGFloat fontSize = config.fontSize;
+//    CTFontRef fontRef = CTFontCreateWithName((CFStringRef)@"ArialMT", fontSize, NULL);
+    CTFontRef fontRef = [self ctFontRefFromUIFont:[UIFont systemFontOfSize:fontSize]];
+    CGFloat lineSpacing = config.lineSpace;
+    const CFIndex kNumberOfSettings = 3;
+    CTParagraphStyleSetting theSettings[kNumberOfSettings] = {
+        { kCTParagraphStyleSpecifierLineSpacingAdjustment, sizeof(CGFloat), &lineSpacing },
+        { kCTParagraphStyleSpecifierMaximumLineSpacing, sizeof(CGFloat), &lineSpacing },
+        { kCTParagraphStyleSpecifierMinimumLineSpacing, sizeof(CGFloat), &lineSpacing }
+    };
+    
+    CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
+    
+    UIColor * textColor = config.textColor;
+    
+    NSMutableDictionary * dict = [NSMutableDictionary dictionary];
+    dict[(id)kCTForegroundColorAttributeName] = (id)textColor.CGColor;
+    dict[(id)kCTFontAttributeName] = (__bridge id)fontRef;
+    dict[(id)kCTParagraphStyleAttributeName] = (__bridge id)theParagraphRef;
+    
+    CFRelease(theParagraphRef);
+    CFRelease(fontRef);
+    return dict;
+}
+
 + (MFDiagnosticCoreTextData *)parseContent:(MFDiagnosticQuestionDataItem *)dataItem
                                     config:(MFFrameParserConfig*)config
 {
-    NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithAttributedString:dataItem.showingTitleDescription];
+    NSMutableDictionary *attributes = [self attributesWithConfig:config];
+    
+    NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithAttributedString:dataItem.showingTitleDescription ];
+    [content setAttributes:attributes range:NSMakeRange(0, content.length)];
+    
     [content appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n" attributes:nil]];
     
     NSMutableAttributedString *contentAttributeString = [self parseContent:dataItem
