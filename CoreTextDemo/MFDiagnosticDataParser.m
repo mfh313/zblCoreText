@@ -79,45 +79,47 @@
     return dict;
 }
 
++ (NSMutableDictionary *)attributesWithDefaultConfig
+{
+    MFFrameParserConfig *defaultConfig = [MFFrameParserConfig new];
+    return [self attributesWithConfig:defaultConfig];
+}
+
 + (MFDiagnosticCoreTextData *)parseContent:(MFDiagnosticQuestionDataItem *)dataItem
                                     config:(MFFrameParserConfig*)config
 {
     NSMutableDictionary *attributes = [self attributesWithConfig:config];
     
-    NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithAttributedString:dataItem.showingTitleDescription];
-    [content setAttributes:attributes range:NSMakeRange(0, content.length)];
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithAttributedString:dataItem.showingTitleDescription];
+    [string setAttributes:attributes range:NSMakeRange(0, string.length)];
     
     NSAttributedString *nAttr = [[NSAttributedString alloc] initWithString:@"\n" attributes:nil];
-    [content appendAttributedString:nAttr];
     
-    NSMutableArray *coreTextModelArray = [NSMutableArray array];
     NSMutableAttributedString *contentAttributeString = [self parseContent:dataItem
                                                                contentItem:dataItem.diagnosticContentArray
-                                                                    config:config
-                                                         contentCoreTextArray:coreTextModelArray];
+                                                                    config:config];
     
-    [content appendAttributedString:contentAttributeString];
+    
+    [string appendAttributedString:nAttr];
+    [string appendAttributedString:contentAttributeString];
     
     // 创建CTFramesetterRef实例
-    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)content);
-    
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)string);
     //获取要缓存的绘制的高度
     CGSize restrictSize = CGSizeMake(config.width, CGFLOAT_MAX);
     CGSize coreTextSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), nil, restrictSize, nil);
-    CGFloat exHeight = 0;
-    CGFloat textHeight = coreTextSize.height + exHeight;
+    CGFloat titleHeight = coreTextSize.height;
     
     //生成CTFrameRef实例
-    CTFrameRef frame = [self createFrameWithFramesetter:framesetter config:config height:textHeight];
+    CTFrameRef frame = [self createFrameWithFramesetter:framesetter config:config orignY:0 height:titleHeight];
+    
+    
     
     MFDiagnosticCoreTextData *coreTextData = [MFDiagnosticCoreTextData new];
     coreTextData.ctFrame = frame;
-    coreTextData.height = textHeight;
-    coreTextData.content = content;
-    coreTextData.exArray = coreTextModelArray;
+    coreTextData.height = titleHeight;
     
     CFRelease(framesetter);
-
     
     return coreTextData;
 }
@@ -125,7 +127,6 @@
 +(NSMutableAttributedString *)parseContent:(MFDiagnosticQuestionDataItem *)dataItem
                                 contentItem:(NSMutableArray *)contentItem
                                       config:(MFFrameParserConfig*)config
-                                      contentCoreTextArray:(NSMutableArray *)coreTextModelArray
 {
     NSInteger columnCount = dataItem.columnCount;
     NSAttributedString *nAttr = [[NSAttributedString alloc] initWithString:@"\n" attributes:nil];
@@ -137,7 +138,9 @@
     for (int i = 0; i < contentItem.count; i++) {
         MFDiagnosticQuestionContentDataItem *item = (MFDiagnosticQuestionContentDataItem *)contentItem[i];
         
-        NSMutableAttributedString *attactString = [self parseImageData:item config:config];
+        NSMutableAttributedString *attactString = [self parseImageData:item
+                                                                config:config
+                                                                  info:dataItem];
         
         [string appendAttributedString:attactString];
         
@@ -184,8 +187,10 @@
     return string;
 }
 
+
 +(NSMutableAttributedString *)parseImageData:(MFDiagnosticQuestionContentDataItem *)contentItem
                                       config:(MFFrameParserConfig*)config
+                                        info:(MFDiagnosticQuestionDataItem *)dataItem
 {
     NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:MFTextAttachmentToken];
     
@@ -194,12 +199,13 @@
     NSString *imagePath = [bundle pathForResource:[NSString stringWithFormat:@"%@@2x",contentItem.imageName] ofType:@"png"];
     UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
     
-    CGSize attachmentSize = image.size;
+    CGSize attachmentSize = CGSizeMake(dataItem.itemWidth, dataItem.itemHeight);
     
     MFTextAttachment *attach = [MFTextAttachment new];
     attach.content = image;
     attach.contentMode = UIViewContentModeCenter;
     attach.attachData = contentItem;
+    attach.layoutData = dataItem;
     
     [attr addAttribute:MFTextAttachmentAttributeName value:attach range:NSMakeRange(0, attr.length)];
     
@@ -228,14 +234,39 @@
 
 + (CTFrameRef)createFrameWithFramesetter:(CTFramesetterRef)framesetter
                                   config:(MFFrameParserConfig *)config
+                                  orignY:(CGFloat)orignY
                                   height:(CGFloat)height {
     
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathAddRect(path, NULL, CGRectMake(0, 0, config.width, height));
+    CGPathAddRect(path, NULL, CGRectMake(0, orignY, config.width, height));
     
     CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
     CFRelease(path);
     return frame;
+}
+
++ (MFDiagnosticCoreTextData *)parseContentDescription:(MFDiagnosticQuestionContentDataItem *)dataItem
+                                    config:(MFFrameParserConfig*)config
+                                lineOrigin:(CGPoint)lineOrigin
+{
+    NSMutableDictionary *attributes = [self attributesWithConfig:config];
+    NSAttributedString *attr = [[NSAttributedString alloc] initWithString:dataItem.contentDescription attributes:attributes];
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attr);
+    CGSize restrictSize = CGSizeMake(config.width, CGFLOAT_MAX);
+    CGSize coreTextSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), nil, restrictSize, nil);
+    CGFloat titleHeight = coreTextSize.height;
+    
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathAddRect(path, NULL, CGRectMake(lineOrigin.x, lineOrigin.y, config.width, titleHeight));
+    
+    CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
+
+    MFDiagnosticCoreTextData *coreTextData = [MFDiagnosticCoreTextData new];
+    coreTextData.ctFrame = frame;
+    coreTextData.height = titleHeight;
+    
+    
+    return coreTextData;
 }
 
 @end

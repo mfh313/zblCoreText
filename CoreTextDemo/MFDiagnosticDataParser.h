@@ -9,11 +9,19 @@
 #import <Foundation/Foundation.h>
 #import "MFDiagnosticCoreTextData.h"
 
-@class MFDiagnosticQuestionDataItem,MFFrameParserConfig;
+@class MFDiagnosticQuestionDataItem,MFFrameParserConfig,MFDiagnosticQuestionContentDataItem;
 
 @interface MFDiagnosticDataParser : NSObject
 
++ (NSMutableDictionary *)attributesWithDefaultConfig;
+
++ (NSMutableDictionary *)attributesWithConfig:(MFFrameParserConfig *)config;
+
 + (MFDiagnosticCoreTextData *)parseContent:(MFDiagnosticQuestionDataItem *)dataItem
                                     config:(MFFrameParserConfig*)config;
+
++ (MFDiagnosticCoreTextData *)parseContentDescription:(MFDiagnosticQuestionContentDataItem *)dataItem
+                                               config:(MFFrameParserConfig*)config
+                                           lineOrigin:(CGPoint)lineOrigin;
 
 @end

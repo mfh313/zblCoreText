@@ -10,6 +10,9 @@
 #import <CoreText/CoreText.h>
 #import "MFTextAttachment.h"
 #import "MFTextRunDelegate.h"
+#import "MFDiagnosticModel.h"
+#import "MFDiagnosticDataParser.h"
+#import "MFFrameParserConfig.h"
 
 static dispatch_queue_t MFCoreTextViewGetReleaseQueue() {
     return dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
@@ -27,8 +30,6 @@ static dispatch_queue_t MFCoreTextViewGetReleaseQueue() {
             [_itemViews addObject:imageView];
             
             imageView.frame = CGRectMake(0, 0, imageView.image.size.width, imageView.image.size.height);
-            
-            [self addSubview:imageView];
         }
     }
     
@@ -59,13 +60,33 @@ static dispatch_queue_t MFCoreTextViewGetReleaseQueue() {
     CGContextTranslateCTM(context, 0, self.bounds.size.height);
     CGContextScaleCTM(context, 1.0, -1.0);
     
-    CTFrameDraw(self.data.ctFrame, context);
+    [self drawTitle:context];
+    [self drawAttachImage:context];
+    [self drawContentDescription:context];
     
-    [self drawAttachPart:context];
+    
+    MFDiagnosticQuestionContentDataItem *contentItem = self.contentItem;
+    
+    MFFrameParserConfig *config = [[MFFrameParserConfig alloc] init];
+    config.width = 85;
+    MFDiagnosticCoreTextData *data = [MFDiagnosticDataParser parseContentDescription:contentItem
+                                                                              config:config
+                                                                          lineOrigin:CGPointMake(0, 0)];
+    CTFrameDraw(data.ctFrame, context);
     
 }
 
--(void)drawAttachPart:(CGContextRef)context
+-(void)drawTitle:(CGContextRef)context
+{
+    CTFrameDraw(self.data.ctFrame, context);
+}
+
+-(void)drawContentDescription:(CGContextRef)context
+{
+    //异步
+}
+
+-(void)drawAttachImage:(CGContextRef)context
 {
     CTFrameRef frame = self.data.ctFrame;
     NSArray *lines = (NSArray *)CTFrameGetLines(frame);
@@ -87,35 +108,59 @@ static dispatch_queue_t MFCoreTextViewGetReleaseQueue() {
                 continue;
             }
             
-            if ([runAttributes[MFTextAttachmentAttributeName] isKindOfClass:[MFTextAttachment class]]) {
-                MFTextAttachment *attach = (MFTextAttachment *)runAttributes[MFTextAttachmentAttributeName];
-                UIImage *content = (UIImage *)attach.content;
-                
-                CGRect runBounds;
-                CGFloat ascent;
-                CGFloat descent;
-                CGFloat leading;
-                runBounds.size.width = CTRunGetTypographicBounds(run, CFRangeMake(0, 0), &ascent, &descent, &leading);
-                runBounds.size.height = ascent + descent;
-                
-                CGFloat xOffset = CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, NULL);
-                runBounds.origin.x = lineOrigins[i].x + xOffset;
-                runBounds.origin.y = lineOrigins[i].y;
-                runBounds.origin.y -= descent;
-                
-                CGPathRef pathRef = CTFrameGetPath(frame);
-                CGRect colRect = CGPathGetBoundingBox(pathRef);
-                
-                CGRect delegateBounds = CGRectOffset(runBounds, colRect.origin.x, colRect.origin.y);
-                
-                NSLog(@"delegateBounds=%@",NSStringFromCGRect(delegateBounds));
-                
-                //填充颜色
-                CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);
-                CGContextFillRect(context, delegateBounds);
-                
-                CGContextDrawImage(context, delegateBounds, content.CGImage);
+            if (![runAttributes[MFTextAttachmentAttributeName] isKindOfClass:[MFTextAttachment class]]) {
+                continue;
             }
+            
+            MFTextAttachment *attach = (MFTextAttachment *)runAttributes[MFTextAttachmentAttributeName];
+            UIImage *content = (UIImage *)attach.content;
+            
+            MFDiagnosticQuestionDataItem *dataItem = (MFDiagnosticQuestionDataItem *)attach.layoutData;
+            
+            CGRect runBounds;
+            CGFloat ascent;
+            CGFloat descent;
+            CGFloat leading;
+            runBounds.size.width = CTRunGetTypographicBounds(run, CFRangeMake(0, 0), &ascent, &descent, &leading);
+            runBounds.size.height = ascent + descent;
+            
+            CGFloat xOffset = CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, NULL);
+            runBounds.origin.x = lineOrigins[i].x + xOffset;
+            runBounds.origin.y = lineOrigins[i].y;
+            runBounds.origin.y -= descent;
+            
+            CGPathRef pathRef = CTFrameGetPath(frame);
+            CGRect colRect = CGPathGetBoundingBox(pathRef);
+            
+            NSLog(@"colRect=%@",NSStringFromCGRect(colRect));
+            
+            CGRect delegateBounds = CGRectOffset(runBounds, colRect.origin.x, colRect.origin.y);
+            
+            CGRect imageRect = CGRectMake(delegateBounds.origin.x + (CGRectGetWidth(delegateBounds)-dataItem.contentImageWidth)/2, delegateBounds.origin.y + CGRectGetHeight(delegateBounds) - dataItem.contentImageHeight, dataItem.contentImageWidth, dataItem.contentImageHeight);
+            
+            CGRect contentDescriptionRect = CGRectMake(imageRect.origin.x, delegateBounds.origin.y, imageRect.size.width, CGRectGetHeight(delegateBounds) - dataItem.contentImageHeight - 10);
+            
+            //测试填充颜色
+            CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
+            CGContextFillRect(context, delegateBounds);
+            
+            CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);
+            CGContextFillRect(context, imageRect);
+            
+            CGContextSetFillColorWithColor(context, [UIColor blueColor].CGColor);
+            CGContextFillRect(context, contentDescriptionRect);
+            
+            CGContextDrawImage(context, imageRect, content.CGImage);
+            
+//            //绘制内容描述
+//            MFDiagnosticQuestionContentDataItem *contentItem = (MFDiagnosticQuestionContentDataItem *)attach.attachData;
+// 
+//            MFFrameParserConfig *config = [[MFFrameParserConfig alloc] init];
+//            config.width = CGRectGetWidth(contentDescriptionRect);
+//            MFDiagnosticCoreTextData *data = [MFDiagnosticDataParser parseContentDescription:contentItem
+//                                                                                      config:config
+//                                                                                  lineOrigin:contentDescriptionRect.origin];
+//            CTFrameDraw(data.ctFrame, context);
             
             id runDelegate = CTRunDelegateGetRefCon(delegate);
             if ([runDelegate isKindOfClass:[MFTextRunDelegate class]]) {
