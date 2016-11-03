@@ -103,7 +103,8 @@
     //获取要缓存的绘制的高度
     CGSize restrictSize = CGSizeMake(config.width, CGFLOAT_MAX);
     CGSize coreTextSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), nil, restrictSize, nil);
-    CGFloat textHeight = coreTextSize.height;
+    CGFloat exHeight = 10.0;
+    CGFloat textHeight = coreTextSize.height + exHeight;
     
     //生成CTFrameRef实例
     CTFrameRef frame = [self createFrameWithFramesetter:framesetter config:config height:textHeight];

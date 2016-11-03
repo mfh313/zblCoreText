@@ -30,7 +30,7 @@
     [self.view addSubview:_richTextView];
     
     NSMutableArray *datas = [[MFCustomerDiagnosticLogic sharedLogic] diagnosticQuestions];
-    MFDiagnosticQuestionDataItem *dataItem = datas[1];
+    MFDiagnosticQuestionDataItem *dataItem = datas[0];
     
     MFFrameParserConfig *config = [[MFFrameParserConfig alloc] init];
     config.width = CGRectGetWidth(_richTextView.bounds);
