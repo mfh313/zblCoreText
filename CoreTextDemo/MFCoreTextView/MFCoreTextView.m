@@ -101,7 +101,7 @@ static dispatch_queue_t MFCoreTextViewGetReleaseQueue() {
                 CGPathRef pathRef = CTFrameGetPath(frame);
                 CGRect colRect = CGPathGetBoundingBox(pathRef);
                 
-                CGRect delegateBounds = CGRectOffset(runBounds, colRect.origin.x + 15, colRect.origin.y);
+                CGRect delegateBounds = CGRectOffset(runBounds, colRect.origin.x, colRect.origin.y);
                 
                 NSLog(@"delegateBounds=%@",NSStringFromCGRect(delegateBounds));
                 

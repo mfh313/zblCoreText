@@ -95,12 +95,6 @@
                                                                contentItem:dataItem.diagnosticContentArray
                                                                     config:config
                                                          contentCoreTextArray:coreTextModelArray];
-//    //测试字体间距
-//    contentAttributeString = [[NSMutableAttributedString alloc] initWithAttributedString:dataItem.showingTitleDescription];
-//    long number = 20.0f;
-//    CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
-//    [contentAttributeString addAttribute:(id)kCTKernAttributeName value:(__bridge id _Nonnull)(num) range:NSMakeRange(0, contentAttributeString.length)];
-//    CFRelease(num);
     
     [content appendAttributedString:contentAttributeString];
     
@@ -110,7 +104,7 @@
     //获取要缓存的绘制的高度
     CGSize restrictSize = CGSizeMake(config.width, CGFLOAT_MAX);
     CGSize coreTextSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), nil, restrictSize, nil);
-    CGFloat exHeight = 10.0;
+    CGFloat exHeight = 0;
     CGFloat textHeight = coreTextSize.height + exHeight;
     
     //生成CTFrameRef实例
@@ -135,39 +129,57 @@
 {
     NSInteger columnCount = dataItem.columnCount;
     NSAttributedString *nAttr = [[NSAttributedString alloc] initWithString:@"\n" attributes:nil];
+    NSMutableAttributedString *space = [[NSMutableAttributedString alloc] initWithString:MFTextAttachmentToken];
     
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
+    [string appendAttributedString:space];
+    
     for (int i = 0; i < contentItem.count; i++) {
         MFDiagnosticQuestionContentDataItem *item = (MFDiagnosticQuestionContentDataItem *)contentItem[i];
         
         NSMutableAttributedString *attactString = [self parseImageData:item config:config];
+        
         [string appendAttributedString:attactString];
         
-        if ((i + 1) % columnCount == 0) {
-            [string appendAttributedString:nAttr];
+        if (i != contentItem.count - 1) {
+            if ((i + 1) % columnCount == 0)
+            {
+                [string appendAttributedString:nAttr];
+                [string appendAttributedString:space];
+            }
+            else
+            {
+                [string appendAttributedString:space];
+            }
         }
     }
     
-//    //首行缩进
-//    CGFloat fristlineindent = 24.0f;
-//    CTParagraphStyleSetting fristline;
-//    fristline.spec = kCTParagraphStyleSpecifierFirstLineHeadIndent;
-//    fristline.value = &fristlineindent;
-//    fristline.valueSize = sizeof(float);
-//    
-//    const CFIndex kNumberOfSettings = 1;
-//    CTParagraphStyleSetting theSettings[kNumberOfSettings] = {fristlineindent};
-//    
-//    CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
-//    NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithObject:(id)theParagraphRef forKey:(id)kCTParagraphStyleAttributeName];
-//    
-//    // set attributes to attributed string
-//    [string addAttributes:attributes range:NSMakeRange(0, string.length)];
-//    
-//    //设置字体间隔
-//    long number = 5;
-//    CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
-//    [string addAttribute:(id)kCTKernAttributeName value:(__bridge id _Nonnull)(num) range:NSMakeRange(0, string.length)];
+    //段缩进
+    CGFloat headindent = 30.0f;
+    CTParagraphStyleSetting head;
+    head.spec = kCTParagraphStyleSpecifierHeadIndent;
+    head.value = &headindent;
+    head.valueSize = sizeof(float);
+    
+    const CFIndex kNumberOfSettings = 5;
+    CGFloat lineSpacing = 10;
+    CTParagraphStyleSetting theSettings[kNumberOfSettings] = {
+        { kCTParagraphStyleSpecifierLineSpacingAdjustment, sizeof(CGFloat), &lineSpacing },
+        { kCTParagraphStyleSpecifierMaximumLineSpacing, sizeof(CGFloat), &lineSpacing },
+        { kCTParagraphStyleSpecifierMinimumLineSpacing, sizeof(CGFloat), &lineSpacing },
+        headindent
+    };
+    
+    CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithObject:(id)theParagraphRef forKey:(id)kCTParagraphStyleAttributeName];
+    
+    // set attributes to attributed string
+    [string addAttributes:attributes range:NSMakeRange(0, string.length)];
+    
+    //设置字体间隔
+    long number = 5;
+    CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
+    [string addAttribute:(id)kCTKernAttributeName value:(__bridge id _Nonnull)(num) range:NSMakeRange(0, string.length)];
     
     return string;
 }
