@@ -10,4 +10,11 @@
 
 @interface MFDiagnosticCoreContentImageData : NSObject
 
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) UIImage *image;
+@property (nonatomic) int position;
+
+// 此坐标是 CoreText 的坐标系，而不是UIKit的坐标系
+@property (nonatomic) CGRect imagePosition;
+
 @end

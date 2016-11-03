@@ -8,6 +8,8 @@
 
 #import "MFCoreTextView.h"
 #import <CoreText/CoreText.h>
+#import "MFTextAttachment.h"
+#import "MFTextRunDelegate.h"
 
 static dispatch_queue_t MFCoreTextViewGetReleaseQueue() {
     return dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
@@ -53,12 +55,70 @@ static dispatch_queue_t MFCoreTextViewGetReleaseQueue() {
     
     CTFrameDraw(self.data.ctFrame, context);
     
-    
+    [self drawAttachPart:context];
     
     //[self drawExample];
 }
 
-
+-(void)drawAttachPart:(CGContextRef)context
+{
+    CTFrameRef frame = self.data.ctFrame;
+    NSArray *lines = (NSArray *)CTFrameGetLines(frame);
+    NSUInteger lineCount = lines.count;
+    CGPoint lineOrigins[lineCount];
+    CTFrameGetLineOrigins(frame, CFRangeMake(0, 0), lineOrigins);
+    
+    for (int i = 0; i < lineCount; i++) {
+        CTLineRef line = (__bridge CTLineRef)lines[i];
+        
+        NSArray *runs = (NSArray *)CTLineGetGlyphRuns(line);
+        
+        for (int j = 0; j < runs.count; j++) {
+            CTRunRef run = (__bridge CTRunRef)runs[j];
+            
+            NSDictionary *runAttributes = (NSDictionary *)CTRunGetAttributes(run);
+            CTRunDelegateRef delegate = (__bridge CTRunDelegateRef)[runAttributes valueForKey:(id)kCTRunDelegateAttributeName];
+            if (delegate == nil) {
+                continue;
+            }
+            
+            if ([runAttributes[MFTextAttachmentAttributeName] isKindOfClass:[MFTextAttachment class]]) {
+                MFTextAttachment *attach = (MFTextAttachment *)runAttributes[MFTextAttachmentAttributeName];
+                UIImage *content = (UIImage *)attach.content;
+                
+                CGRect runBounds;
+                CGFloat ascent;
+                CGFloat descent;
+                CGFloat leading;
+                runBounds.size.width = CTRunGetTypographicBounds(run, CFRangeMake(0, 0), &ascent, &descent, &leading);
+                runBounds.size.height = ascent + descent;
+                
+                CGFloat xOffset = CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, NULL);
+                runBounds.origin.x = lineOrigins[i].x + xOffset;
+                runBounds.origin.y = lineOrigins[i].y;
+                runBounds.origin.y -= descent;
+                
+                CGPathRef pathRef = CTFrameGetPath(frame);
+                CGRect colRect = CGPathGetBoundingBox(pathRef);
+                
+                CGRect delegateBounds = CGRectOffset(runBounds, colRect.origin.x + 15, colRect.origin.y);
+                
+                NSLog(@"delegateBounds=%@",NSStringFromCGRect(delegateBounds));
+                
+                //填充颜色
+                CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);
+                CGContextFillRect(context, delegateBounds);
+                
+                CGContextDrawImage(context, delegateBounds, content.CGImage);
+            }
+            
+            id runDelegate = CTRunDelegateGetRefCon(delegate);
+            if ([runDelegate isKindOfClass:[MFTextRunDelegate class]]) {
+                
+            }
+        }
+    }
+}
 
 -(void)drawExample
 {

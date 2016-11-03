@@ -75,6 +75,7 @@
     for (int i = 0; i < _diagnosticQuestions.count; i++) {
         MFDiagnosticQuestionDataItem *dataItem = _diagnosticQuestions[i];
         NSMutableAttributedString *showingTitleDescription = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d、%@",i+1,dataItem.titleDescription]];
+        
         dataItem.showingTitleDescription = showingTitleDescription;
         
         dataItem.contentImageWidth = dataItem.contentImageWidth / 2;

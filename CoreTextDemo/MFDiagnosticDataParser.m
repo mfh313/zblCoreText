@@ -7,13 +7,39 @@
 //
 
 #import "MFDiagnosticDataParser.h"
-#import "MFCustomerDiagnosticLogic.h"
 #import "MFFrameParserConfig.h"
 #import "MFTextAttachment.h"
 #import "MFTextRunDelegate.h"
+#import "MFDiagnosticModel.h"
+
+#import "MFDiagnosticCoreContentTextData.h"
+#import "MFDiagnosticCoreContentImageData.h"
 
 
 @implementation MFDiagnosticDataParser
+
++(NSMutableAttributedString *)_textWithString:(NSString *)text WithRemarkColor:(UIColor *)remarkColor
+{
+    NSMutableAttributedString *mText = [[NSMutableAttributedString alloc] initWithString:text];
+    
+    NSArray *bracketsResults = [[[self class] regexBrackets] matchesInString:mText.string options:kNilOptions range:NSMakeRange(0, mText.length)];
+    for (NSTextCheckingResult *brackets in bracketsResults) {
+        NSRange bracketsRange = brackets.range;
+        [mText addAttribute:NSForegroundColorAttributeName value:remarkColor range:bracketsRange];
+    }
+    
+    return mText;
+}
+
++ (NSRegularExpression *)regexBrackets {
+    static NSRegularExpression *regex;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        //匹配括号内的内容
+        regex = [NSRegularExpression regularExpressionWithPattern:@"\（.*\）" options:kNilOptions error:NULL];
+    });
+    return regex;
+}
 
 + (UIFont *)uifontFromCTFontRef:(CTFontRef)ctFont {
     CGFloat pointSize = CTFontGetSize(ctFont);
@@ -27,9 +53,9 @@
     return CFAutorelease(ctfont);
 }
 
+//    CTFontRef fontRef = CTFontCreateWithName((CFStringRef)@"ArialMT", fontSize, NULL);
 + (NSMutableDictionary *)attributesWithConfig:(MFFrameParserConfig *)config {
     CGFloat fontSize = config.fontSize;
-//    CTFontRef fontRef = CTFontCreateWithName((CFStringRef)@"ArialMT", fontSize, NULL);
     CTFontRef fontRef = [self ctFontRefFromUIFont:[UIFont systemFontOfSize:fontSize]];
     CGFloat lineSpacing = config.lineSpace;
     const CFIndex kNumberOfSettings = 3;
@@ -58,14 +84,17 @@
 {
     NSMutableDictionary *attributes = [self attributesWithConfig:config];
     
-    NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithAttributedString:dataItem.showingTitleDescription ];
+    NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithAttributedString:dataItem.showingTitleDescription];
     [content setAttributes:attributes range:NSMakeRange(0, content.length)];
     
-    [content appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n" attributes:nil]];
+    NSAttributedString *nAttr = [[NSAttributedString alloc] initWithString:@"\n" attributes:nil];
+    [content appendAttributedString:nAttr];
     
+    NSMutableArray *coreTextModelArray = [NSMutableArray array];
     NSMutableAttributedString *contentAttributeString = [self parseContent:dataItem
                                                                contentItem:dataItem.diagnosticContentArray
-                                                                    config:config];
+                                                                    config:config
+                                                         contentCoreTextArray:coreTextModelArray];
     [content appendAttributedString:contentAttributeString];
     
     // 创建CTFramesetterRef实例
@@ -83,6 +112,7 @@
     coreTextData.ctFrame = frame;
     coreTextData.height = textHeight;
     coreTextData.content = content;
+    coreTextData.exArray = coreTextModelArray;
     
     return coreTextData;
 }
@@ -90,6 +120,7 @@
 +(NSMutableAttributedString *)parseContent:(MFDiagnosticQuestionDataItem *)dataItem
                                 contentItem:(NSMutableArray *)contentItem
                                       config:(MFFrameParserConfig*)config
+                                      contentCoreTextArray:(NSMutableArray *)coreTextModelArray
 {
     NSInteger columnCount = dataItem.columnCount;
     NSAttributedString *nAttr = [[NSAttributedString alloc] initWithString:@"\n" attributes:nil];
@@ -98,12 +129,34 @@
     for (int i = 0; i < contentItem.count; i++) {
         MFDiagnosticQuestionContentDataItem *item = (MFDiagnosticQuestionContentDataItem *)contentItem[i];
         
-        [string appendAttributedString:[self parseImageData:item config:config]];
+        NSMutableAttributedString *attactString = [self parseImageData:item config:config];
+        [string appendAttributedString:attactString];
         
         if ((i + 1) % columnCount == 0) {
             [string appendAttributedString:nAttr];
         }
     }
+    
+//    //首行缩进
+//    CGFloat fristlineindent = 24.0f;
+//    CTParagraphStyleSetting fristline;
+//    fristline.spec = kCTParagraphStyleSpecifierFirstLineHeadIndent;
+//    fristline.value = &fristlineindent;
+//    fristline.valueSize = sizeof(float);
+//    
+//    const CFIndex kNumberOfSettings = 1;
+//    CTParagraphStyleSetting theSettings[kNumberOfSettings] = {fristlineindent};
+//    
+//    CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
+//    NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithObject:(id)theParagraphRef forKey:(id)kCTParagraphStyleAttributeName];
+//    
+//    // set attributes to attributed string
+//    [string addAttributes:attributes range:NSMakeRange(0, string.length)];
+//    
+//    //设置字体间隔
+//    long number = 5;
+//    CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
+//    [string addAttribute:(id)kCTKernAttributeName value:(__bridge id _Nonnull)(num) range:NSMakeRange(0, string.length)];
     
     return string;
 }
@@ -123,6 +176,7 @@
     MFTextAttachment *attach = [MFTextAttachment new];
     attach.content = image;
     attach.contentMode = UIViewContentModeCenter;
+    attach.attachData = contentItem;
     
     [attr addAttribute:MFTextAttachmentAttributeName value:attach range:NSMakeRange(0, attr.length)];
     

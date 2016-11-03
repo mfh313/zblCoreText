@@ -18,6 +18,7 @@ UIKIT_EXTERN NSString *const MFTextAttachmentAttributeName;
 @property (nonatomic,assign) UIViewContentMode contentMode;
 @property (nonatomic) UIEdgeInsets contentInsets;
 @property (nullable,nonatomic,strong) NSDictionary *userInfo;
+@property (nullable,nonatomic,strong) id attachData;
 
 + (instancetype)attachmentWithContent:(nullable id)content;
 
