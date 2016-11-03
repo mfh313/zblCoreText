@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CoreTextDemo/MFCoreTextView/MFCoreTextView.m"
-            timestampString = "499834566.977519"
+            timestampString = "499837993.672343"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "-drawAttachPart:"
             landmarkType = "7">
          </BreakpointContent>
