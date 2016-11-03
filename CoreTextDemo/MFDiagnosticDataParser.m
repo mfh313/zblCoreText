@@ -95,6 +95,13 @@
                                                                contentItem:dataItem.diagnosticContentArray
                                                                     config:config
                                                          contentCoreTextArray:coreTextModelArray];
+//    //测试字体间距
+//    contentAttributeString = [[NSMutableAttributedString alloc] initWithAttributedString:dataItem.showingTitleDescription];
+//    long number = 20.0f;
+//    CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
+//    [contentAttributeString addAttribute:(id)kCTKernAttributeName value:(__bridge id _Nonnull)(num) range:NSMakeRange(0, contentAttributeString.length)];
+//    CFRelease(num);
+    
     [content appendAttributedString:contentAttributeString];
     
     // 创建CTFramesetterRef实例
@@ -114,6 +121,9 @@
     coreTextData.height = textHeight;
     coreTextData.content = content;
     coreTextData.exArray = coreTextModelArray;
+    
+    CFRelease(framesetter);
+
     
     return coreTextData;
 }
