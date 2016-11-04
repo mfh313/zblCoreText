@@ -29,8 +29,9 @@
     [self.view addSubview:_contentScrollView];
     
     NSMutableArray *datas = [[MFCustomerDiagnosticLogic sharedLogic] diagnosticQuestions];
-    MFDiagnosticQuestionDataItem *dataItem = datas[8];
-
+    MFDiagnosticQuestionDataItem *dataItem = datas[0];
+    MFDiagnosticQuestionDataItem *dataItem2 = datas[1];
+    MFDiagnosticQuestionDataItem *dataItem3 = datas[2];
     
     ParagraphStyleTextView *testView = [[ParagraphStyleTextView alloc] initWithFrame:CGRectMake(10, 50, CGRectGetWidth(self.view.bounds)-20, 300)];
     testView.backgroundColor = [UIColor lightGrayColor];
@@ -41,9 +42,6 @@
     richTextView1.backgroundColor = [UIColor whiteColor];
     [_contentScrollView addSubview:richTextView1];
     [richTextView1 setNeedsDisplay];
-    
-    MFDiagnosticQuestionDataItem *dataItem2 = datas[1];
-    MFDiagnosticQuestionDataItem *dataItem3 = datas[2];
     
     CGRect richTextViewFrame2 = CGRectMake(10,CGRectGetMaxY(richTextView1.frame) + 10, CGRectGetWidth(self.view.bounds)-20, 200);
     MFCoreTextView *richTextView2 = [self coreTextView:richTextViewFrame2 dataItem:dataItem2];
