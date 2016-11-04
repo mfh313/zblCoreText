@@ -100,9 +100,18 @@
     NSMutableAttributedString *contentAttributeString = [self parseContent:dataItem
                                                                contentItem:dataItem.diagnosticContentArray
                                                                     config:config];
-    
-    
     [string appendAttributedString:contentAttributeString];
+    
+    //设置标题和图片换行距离
+    CGFloat paragraghSpace = 20.0f;
+    const CFIndex kNumberOfSettings = 1;
+    CTParagraphStyleSetting theSettings[kNumberOfSettings] = {
+        {kCTParagraphStyleSpecifierParagraphSpacing, sizeof(CGFloat), &paragraghSpace}
+    };
+    CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
+    NSMutableDictionary *exAttributes = [NSMutableDictionary dictionaryWithObject:(id)theParagraphRef forKey:(id)kCTParagraphStyleAttributeName];
+    [string addAttributes:exAttributes range:NSMakeRange(0, string.length)];
+    
     
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)string);
     CGSize restrictSize = CGSizeMake(config.width, CGFLOAT_MAX);
@@ -164,7 +173,7 @@
     headIndent.valueSize = sizeof(CGFloat);
     headIndent.value = &headIndentSize;
     
-    //段前间隔
+    //段前间隔,段与段之间的距离
     CGFloat paragraghSpace = 20.0f;           //TODO:图片上下间距，后面存json
     CTParagraphStyleSetting paragraghInterval;
     paragraghInterval.spec = kCTParagraphStyleSpecifierParagraphSpacing;

@@ -59,7 +59,6 @@
 //    [richTextView2 setNeedsDisplay];
 //    [richTextView3 setNeedsDisplay];
     
-    
     CGFloat maxY = CGRectGetMaxY(richTextView1.frame);
     _contentScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.bounds), 30 + maxY);
     

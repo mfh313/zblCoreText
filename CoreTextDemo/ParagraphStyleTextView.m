@@ -19,7 +19,7 @@
     CGContextTranslateCTM(context, 0, self.bounds.size.height);
     CGContextScaleCTM(context, 1.0, -1.0);
     
-    NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:@"测试段落样式测试段落样式测试段落样式测试段落样式测试段落样式测试段落样式\n测试段落样式测试段落样\n式测试段落样式测试段落样式"];
+    NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:@"测试段落样式测试段落样式测试段落样式测试段落样式测试段落样式测试123\n456测试段落样式测试段落样78\n910式测试段落样式测试段落样式"];
     
     
     //首行缩进
@@ -69,7 +69,7 @@
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attString);
     CGSize restrictSize = CGSizeMake(400, CGFLOAT_MAX);
     CGSize coreTextSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), nil, restrictSize, nil);
-    CGFloat titleHeight = coreTextSize.height;
+//    CGFloat titleHeight = coreTextSize.height;
     
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathAddRect(path, NULL, self.bounds);
