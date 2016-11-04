@@ -14,8 +14,7 @@
 
 @interface ViewController ()
 {
-    MFCoreTextView *_richTextView;
-    MFCoreTextView *_richTextView2;
+    UIScrollView *_contentScrollView;
 }
 
 @end
@@ -25,41 +24,55 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _richTextView = [[MFCoreTextView alloc] initWithFrame:CGRectMake(10, 50, CGRectGetWidth(self.view.bounds)-20, 200)];
-    _richTextView.backgroundColor = [UIColor lightGrayColor];
-    [self.view addSubview:_richTextView];
+    _contentScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:_contentScrollView];
     
     NSMutableArray *datas = [[MFCustomerDiagnosticLogic sharedLogic] diagnosticQuestions];
-    MFDiagnosticQuestionDataItem *dataItem = datas[1];
+    MFDiagnosticQuestionDataItem *dataItem = datas[0];
+    MFDiagnosticQuestionDataItem *dataItem2 = datas[1];
+    MFDiagnosticQuestionDataItem *dataItem3 = datas[2];
     
-    MFFrameParserConfig *config = [[MFFrameParserConfig alloc] init];
-    config.width = CGRectGetWidth(_richTextView.bounds);
+    CGRect richTextViewFrame = CGRectMake(10,50, CGRectGetWidth(self.view.bounds)-20, 200);
+    MFCoreTextView *richTextView1 = [self coreTextView:richTextViewFrame dataItem:dataItem];
+    richTextView1.backgroundColor = [UIColor whiteColor];
+    [_contentScrollView addSubview:richTextView1];
+    
+    CGRect richTextViewFrame2 = CGRectMake(10,CGRectGetMaxY(richTextView1.frame) + 10, CGRectGetWidth(self.view.bounds)-20, 200);
+    MFCoreTextView *richTextView2 = [self coreTextView:richTextViewFrame2 dataItem:dataItem2];
+    richTextView2.backgroundColor = [UIColor whiteColor];
+    [_contentScrollView addSubview:richTextView2];
+    
+    CGRect richTextViewFrame3 = CGRectMake(10,CGRectGetMaxY(richTextView2.frame) + 10, CGRectGetWidth(self.view.bounds)-20, 200);
+    MFCoreTextView *richTextView3 = [self coreTextView:richTextViewFrame3 dataItem:dataItem3];
+    richTextView3.backgroundColor = [UIColor grayColor];
+    [_contentScrollView addSubview:richTextView3];
+    
+    _contentScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.bounds), 30 + CGRectGetMaxY(richTextView3.frame));
+
+    [richTextView1 setNeedsDisplay];
+    [richTextView2 setNeedsDisplay];
+    [richTextView3 setNeedsDisplay];
+    
+}
+
+-(MFCoreTextView *)coreTextView:(CGRect)frame
+                       dataItem:(MFDiagnosticQuestionDataItem *)dataItem
+{
+    MFCoreTextView *richTextView = [[MFCoreTextView alloc] initWithFrame:frame];
+    richTextView.backgroundColor = [UIColor yellowColor];
+
+    MFFrameParserConfig *config = [MFFrameParserConfig new];
+    config.width = CGRectGetWidth(frame);
     config.fontSize = 18.0f;
     config.lineSpace = 2.0f;
     
     MFDiagnosticCoreTextData *data = [MFDiagnosticDataParser parseContent:dataItem config:config];
-    _richTextView.data = data;
+    richTextView.data = data;
+    frame.size.height = data.height;
+    richTextView.frame = frame;
     
-    _richTextView.dataItem = dataItem;
-    
-    _richTextView.frame = CGRectMake(_richTextView.frame.origin.x, _richTextView.frame.origin.y, _richTextView.frame.size.width, data.height);
-    [_richTextView setNeedsDisplay];
-    
-    
-    //_richTextView2
-//    MFDiagnosticQuestionDataItem *dataItem2 = datas[1];
-//    _richTextView2 = [[MFCoreTextView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(_richTextView.frame) + 10, CGRectGetWidth(self.view.bounds)-20, 200)];
-//    _richTextView2.backgroundColor = [UIColor yellowColor];
-//    [self.view addSubview:_richTextView2];
-//    
-//    config.width = CGRectGetWidth(_richTextView2.bounds);
-//    MFDiagnosticCoreTextData *data2 = [MFDiagnosticDataParser parseContent:dataItem2 config:config];
-//    _richTextView2.data = data2;
-//    _richTextView2.frame = CGRectMake(_richTextView2.frame.origin.x, _richTextView2.frame.origin.y, _richTextView2.frame.size.width, data2.height);
-//    [_richTextView2 setNeedsDisplay];
-    
+    return richTextView;
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

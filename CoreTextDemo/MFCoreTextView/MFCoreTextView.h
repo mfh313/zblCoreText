@@ -18,6 +18,4 @@
 
 @property (strong, nonatomic) MFDiagnosticCoreTextData * data;
 
-@property (strong, nonatomic) MFDiagnosticQuestionDataItem * dataItem;
-
 @end

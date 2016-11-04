@@ -69,7 +69,6 @@
 
 }
 
-
 -(void)fixDiagnosticQuestions
 {
     for (int i = 0; i < _diagnosticQuestions.count; i++) {

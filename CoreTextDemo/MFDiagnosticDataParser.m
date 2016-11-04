@@ -75,7 +75,6 @@
     dict[(id)kCTParagraphStyleAttributeName] = (__bridge id)theParagraphRef;
     
     CFRelease(theParagraphRef);
-    CFRelease(fontRef);
     return dict;
 }
 
@@ -283,6 +282,8 @@
     coreTextData.ctFrame = frame;
     coreTextData.height = titleHeight;
     
+    CFRelease(framesetter);
+    CFRelease(path);
     
     return coreTextData;
 }
