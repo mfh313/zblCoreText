@@ -91,25 +91,11 @@
 {
     NSMutableDictionary *attributes = [self attributesWithConfig:config];
     
-    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithAttributedString:dataItem.showingTitleDescription];
-    [string setAttributes:attributes range:NSMakeRange(0, string.length)];
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
     
-//    //段前间隔
-//    CGFloat paragraghSpace = 10.0f;           //TODO:图片上下间距，后面存json
-//    CTParagraphStyleSetting paragraghInterval;
-//    paragraghInterval.spec = kCTParagraphStyleSpecifierParagraphSpacing;
-//    paragraghInterval.valueSize = sizeof(CGFloat);
-//    paragraghInterval.value = &paragraghSpace;
-//    
-//    const CFIndex kNumberOfSettings = 1;
-//    CTParagraphStyleSetting theSettings[] = {
-//        paragraghSpace
-//    };
-//    
-//    CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
-//    NSMutableDictionary *exAttributes = [NSMutableDictionary dictionaryWithObject:(id)theParagraphRef forKey:(id)kCTParagraphStyleAttributeName];
-//    
-//    [string addAttributes:exAttributes range:NSMakeRange(0, string.length)];
+    NSMutableAttributedString *titleAttr = [[NSMutableAttributedString alloc] initWithAttributedString:dataItem.showingTitleDescription];
+    [titleAttr setAttributes:attributes range:NSMakeRange(0, titleAttr.length)];
+    [string appendAttributedString:titleAttr];
     
     NSMutableAttributedString *contentAttributeString = [self parseContent:dataItem
                                                                contentItem:dataItem.diagnosticContentArray
@@ -134,8 +120,8 @@
 }
 
 +(NSMutableAttributedString *)parseContent:(MFDiagnosticQuestionDataItem *)dataItem
-                                contentItem:(NSMutableArray *)contentItem
-                                      config:(MFFrameParserConfig*)config
+                               contentItem:(NSMutableArray *)contentItem
+                                    config:(MFFrameParserConfig*)config
 {
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
     
@@ -146,11 +132,9 @@
     
     for (int i = 0; i < contentItem.count; i++) {
         MFDiagnosticQuestionContentDataItem *item = (MFDiagnosticQuestionContentDataItem *)contentItem[i];
-        
         NSMutableAttributedString *attactString = [self parseImageData:item
                                                                 config:config
                                                                   info:dataItem];
-        
         NSMutableAttributedString *space = [[NSMutableAttributedString alloc] initWithString:MFTextAttachmentToken];
        
         [string appendAttributedString:space];
@@ -162,7 +146,7 @@
         }
     }
     
-    long number = 20;    //TODO:图片左右间隔，后面存json
+    long number = 20;                          //TODO:图片左右间隔，后面存json
     CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
     [string addAttribute:(id)kCTKernAttributeName value:(__bridge id)num range:NSMakeRange(0, string.length)];
     
@@ -247,21 +231,9 @@
     
 }
 
-+ (CTFrameRef)createFrameWithFramesetter:(CTFramesetterRef)framesetter
-                                  config:(MFFrameParserConfig *)config
-                                  height:(CGFloat)height {
-    
-    CGMutablePathRef path = CGPathCreateMutable();
-    CGPathAddRect(path, NULL, CGRectMake(0, 0, config.width, height));
-    
-    CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
-    CFRelease(path);
-    return frame;
-}
-
 + (MFDiagnosticCoreTextData *)parseContentDescription:(MFDiagnosticQuestionContentDataItem *)dataItem
-                                    config:(MFFrameParserConfig*)config
-                                fillRect:(CGRect)fillRect
+                                               config:(MFFrameParserConfig*)config
+                                             fillRect:(CGRect)fillRect
 {
     config.width = fillRect.size.width;
     
@@ -301,6 +273,18 @@
     CFRelease(path);
     
     return coreTextData;
+}
+
++ (CTFrameRef)createFrameWithFramesetter:(CTFramesetterRef)framesetter
+                                  config:(MFFrameParserConfig *)config
+                                  height:(CGFloat)height {
+    
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathAddRect(path, NULL, CGRectMake(0, 0, config.width, height));
+    
+    CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
+    CFRelease(path);
+    return frame;
 }
 
 @end

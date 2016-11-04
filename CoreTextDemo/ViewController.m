@@ -29,7 +29,7 @@
     [self.view addSubview:_contentScrollView];
     
     NSMutableArray *datas = [[MFCustomerDiagnosticLogic sharedLogic] diagnosticQuestions];
-    MFDiagnosticQuestionDataItem *dataItem = datas[8];
+    MFDiagnosticQuestionDataItem *dataItem = datas[7];
 
     
     ParagraphStyleTextView *testView = [[ParagraphStyleTextView alloc] initWithFrame:CGRectMake(10, 50, CGRectGetWidth(self.view.bounds)-20, 300)];
