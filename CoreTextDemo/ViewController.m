@@ -11,6 +11,7 @@
 #import "MFCustomerDiagnosticLogic.h"
 #import "MFFrameParserConfig.h"
 #import "MFDiagnosticDataParser.h"
+#import "ParagraphStyleTextView.h"
 
 @interface ViewController ()
 {
@@ -28,16 +29,22 @@
     [self.view addSubview:_contentScrollView];
     
     NSMutableArray *datas = [[MFCustomerDiagnosticLogic sharedLogic] diagnosticQuestions];
-    MFDiagnosticQuestionDataItem *dataItem = datas[0];
-    MFDiagnosticQuestionDataItem *dataItem2 = datas[1];
-    MFDiagnosticQuestionDataItem *dataItem3 = datas[2];
+    MFDiagnosticQuestionDataItem *dataItem = datas[8];
+
     
-    CGRect richTextViewFrame = CGRectMake(10,50, CGRectGetWidth(self.view.bounds)-20, 200);
+    ParagraphStyleTextView *testView = [[ParagraphStyleTextView alloc] initWithFrame:CGRectMake(10, 50, CGRectGetWidth(self.view.bounds)-20, 300)];
+    testView.backgroundColor = [UIColor lightGrayColor];
+    [_contentScrollView addSubview:testView];
+    
+    CGRect richTextViewFrame = CGRectMake(10,CGRectGetMaxY(testView.frame) + 20, CGRectGetWidth(self.view.bounds)-20, 200);
     MFCoreTextView *richTextView1 = [self coreTextView:richTextViewFrame dataItem:dataItem];
     richTextView1.backgroundColor = [UIColor lightGrayColor];
     [_contentScrollView addSubview:richTextView1];
     [richTextView1 setNeedsDisplay];
     
+//    MFDiagnosticQuestionDataItem *dataItem2 = datas[1];
+//    MFDiagnosticQuestionDataItem *dataItem3 = datas[2];
+//    
 //    CGRect richTextViewFrame2 = CGRectMake(10,CGRectGetMaxY(richTextView1.frame) + 10, CGRectGetWidth(self.view.bounds)-20, 200);
 //    MFCoreTextView *richTextView2 = [self coreTextView:richTextViewFrame2 dataItem:dataItem2];
 //    richTextView2.backgroundColor = [UIColor purpleColor];
@@ -47,12 +54,15 @@
 //    MFCoreTextView *richTextView3 = [self coreTextView:richTextViewFrame3 dataItem:dataItem3];
 //    richTextView3.backgroundColor = [UIColor grayColor];
 //    [_contentScrollView addSubview:richTextView3];
+//    
+//
+//    [richTextView2 setNeedsDisplay];
+//    [richTextView3 setNeedsDisplay];
+    
     
     CGFloat maxY = CGRectGetMaxY(richTextView1.frame);
     _contentScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.bounds), 30 + maxY);
-
-//    [richTextView2 setNeedsDisplay];
-//    [richTextView3 setNeedsDisplay];
+    
     
 }
 

@@ -58,20 +58,13 @@
     CGFloat fontSize = config.fontSize;
     CTFontRef fontRef = [self ctFontRefFromUIFont:[UIFont systemFontOfSize:fontSize]];
     
-    CGFloat headindent = 50.0f;
-    CTParagraphStyleSetting head;
-    head.spec = kCTParagraphStyleSpecifierHeadIndent;
-    head.value = &headindent;
-    head.valueSize = sizeof(float);
-    
-    
+
     CGFloat lineSpacing = config.lineSpace;
-    const CFIndex kNumberOfSettings = 4;
+    const CFIndex kNumberOfSettings = 3;
     CTParagraphStyleSetting theSettings[kNumberOfSettings] = {
         { kCTParagraphStyleSpecifierLineSpacingAdjustment, sizeof(CGFloat), &lineSpacing },
         { kCTParagraphStyleSpecifierMaximumLineSpacing, sizeof(CGFloat), &lineSpacing },
-        { kCTParagraphStyleSpecifierMinimumLineSpacing, sizeof(CGFloat), &lineSpacing },
-        head
+        { kCTParagraphStyleSpecifierMinimumLineSpacing, sizeof(CGFloat), &lineSpacing }
     };
     
     CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
@@ -101,30 +94,39 @@
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithAttributedString:dataItem.showingTitleDescription];
     [string setAttributes:attributes range:NSMakeRange(0, string.length)];
     
-    NSAttributedString *nAttr = [[NSAttributedString alloc] initWithString:@"\n" attributes:nil];
+//    //段前间隔
+//    CGFloat paragraghSpace = 10.0f;           //TODO:图片上下间距，后面存json
+//    CTParagraphStyleSetting paragraghInterval;
+//    paragraghInterval.spec = kCTParagraphStyleSpecifierParagraphSpacing;
+//    paragraghInterval.valueSize = sizeof(CGFloat);
+//    paragraghInterval.value = &paragraghSpace;
+//    
+//    const CFIndex kNumberOfSettings = 1;
+//    CTParagraphStyleSetting theSettings[] = {
+//        paragraghSpace
+//    };
+//    
+//    CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
+//    NSMutableDictionary *exAttributes = [NSMutableDictionary dictionaryWithObject:(id)theParagraphRef forKey:(id)kCTParagraphStyleAttributeName];
+//    
+//    [string addAttributes:exAttributes range:NSMakeRange(0, string.length)];
     
     NSMutableAttributedString *contentAttributeString = [self parseContent:dataItem
                                                                contentItem:dataItem.diagnosticContentArray
                                                                     config:config];
     
     
-    [string appendAttributedString:nAttr];
     [string appendAttributedString:contentAttributeString];
     
-    // 创建CTFramesetterRef实例
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)string);
-    //获取要缓存的绘制的高度
     CGSize restrictSize = CGSizeMake(config.width, CGFLOAT_MAX);
     CGSize coreTextSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), nil, restrictSize, nil);
-    CGFloat titleHeight = coreTextSize.height;
-    
-    //生成CTFrameRef实例
-    CTFrameRef frame = [self createFrameWithFramesetter:framesetter config:config orignY:0 height:titleHeight];
-    
+    CGFloat height = coreTextSize.height;
+    CTFrameRef frame = [self createFrameWithFramesetter:framesetter config:config height:height];
     
     MFDiagnosticCoreTextData *coreTextData = [MFDiagnosticCoreTextData new];
     coreTextData.ctFrame = frame;
-    coreTextData.height = titleHeight;
+    coreTextData.height = height;
     
     CFRelease(framesetter);
     
@@ -135,11 +137,12 @@
                                 contentItem:(NSMutableArray *)contentItem
                                       config:(MFFrameParserConfig*)config
 {
-    NSInteger columnCount = dataItem.columnCount;
-    NSAttributedString *nAttr = [[NSAttributedString alloc] initWithString:@"\n" attributes:nil];
-    NSMutableAttributedString *space = [[NSMutableAttributedString alloc] initWithString:MFTextAttachmentToken];
-    
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
+    
+    NSAttributedString *nAttr = [[NSAttributedString alloc] initWithString:@"\n" attributes:nil];
+    [string appendAttributedString:nAttr];
+    
+    NSInteger columnCount = dataItem.columnCount;
     
     for (int i = 0; i < contentItem.count; i++) {
         MFDiagnosticQuestionContentDataItem *item = (MFDiagnosticQuestionContentDataItem *)contentItem[i];
@@ -148,42 +151,53 @@
                                                                 config:config
                                                                   info:dataItem];
         
+        NSMutableAttributedString *space = [[NSMutableAttributedString alloc] initWithString:MFTextAttachmentToken];
+       
+        [string appendAttributedString:space];
         [string appendAttributedString:attactString];
         
-        if (i != contentItem.count - 1) {
-            if ((i + 1) % columnCount == 0)
-            {
-                [string appendAttributedString:nAttr];
-//                [string appendAttributedString:space];
-            }
-            else
-            {
-//                [string appendAttributedString:space];
-            }
+        if ((i + 1) % columnCount == 0)
+        {
+            [string appendAttributedString:nAttr];
         }
     }
     
-    //段缩进
-    CGFloat headindent = 50.0f;    
-    CTParagraphStyleSetting head;
-    head.spec = kCTParagraphStyleSpecifierHeadIndent;
-    head.value = &headindent;
-    head.valueSize = sizeof(float);
+    long number = 20;    //TODO:图片左右间隔，后面存json
+    CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
+    [string addAttribute:(id)kCTKernAttributeName value:(__bridge id)num range:NSMakeRange(0, string.length)];
     
-    const CFIndex kNumberOfSettings = 4;
-    CGFloat lineSpacing = 100;
+    //首行缩进,图片偏移
+    CGFloat firstLineIndentSize = 10.0f;      //TODO:图片最左边偏移，后面存json
+    CTParagraphStyleSetting firstLineIndent;
+    firstLineIndent.spec = kCTParagraphStyleSpecifierFirstLineHeadIndent;
+    firstLineIndent.valueSize = sizeof(CGFloat);
+    firstLineIndent.value = &firstLineIndentSize;
+    
+    //段前缩进
+    CGFloat headIndentSize = 20.0f;
+    CTParagraphStyleSetting headIndent;
+    headIndent.spec = kCTParagraphStyleSpecifierHeadIndent;
+    headIndent.valueSize = sizeof(CGFloat);
+    headIndent.value = &headIndentSize;
+    
+    //段前间隔
+    CGFloat paragraghSpace = 20.0f;           //TODO:图片上下间距，后面存json
+    CTParagraphStyleSetting paragraghInterval;
+    paragraghInterval.spec = kCTParagraphStyleSpecifierParagraphSpacing;
+    paragraghInterval.valueSize = sizeof(CGFloat);
+    paragraghInterval.value = &paragraghSpace;
+    
+    const CFIndex kNumberOfSettings = 3;
     CTParagraphStyleSetting theSettings[] = {
-        { kCTParagraphStyleSpecifierLineSpacingAdjustment, sizeof(CGFloat), &lineSpacing },
-        { kCTParagraphStyleSpecifierMaximumLineSpacing, sizeof(CGFloat), &lineSpacing },
-        { kCTParagraphStyleSpecifierMinimumLineSpacing, sizeof(CGFloat), &lineSpacing },
-        head
+        firstLineIndent,
+        headIndent,
+        paragraghInterval
     };
     
     CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
-    NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithObject:(id)theParagraphRef forKey:(id)kCTParagraphStyleAttributeName];
+    NSMutableDictionary *exAttributes = [NSMutableDictionary dictionaryWithObject:(id)theParagraphRef forKey:(id)kCTParagraphStyleAttributeName];
     
-    // set attributes to attributed string
-    [string addAttributes:attributes range:NSMakeRange(0, string.length)];
+    [string addAttributes:exAttributes range:NSMakeRange(0, string.length)];
     
     return string;
 }
@@ -235,11 +249,10 @@
 
 + (CTFrameRef)createFrameWithFramesetter:(CTFramesetterRef)framesetter
                                   config:(MFFrameParserConfig *)config
-                                  orignY:(CGFloat)orignY
                                   height:(CGFloat)height {
     
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathAddRect(path, NULL, CGRectMake(0, orignY, config.width, height));
+    CGPathAddRect(path, NULL, CGRectMake(0, 0, config.width, height));
     
     CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
     CFRelease(path);
