@@ -71,7 +71,7 @@ static dispatch_queue_t MFCoreTextViewGetReleaseQueue() {
     config.width = 85;
     MFDiagnosticCoreTextData *data = [MFDiagnosticDataParser parseContentDescription:contentItem
                                                                               config:config
-                                                                          lineOrigin:CGPointMake(0, 0)];
+                                                                          lineOrigin:CGPointMake(20, 0)];
     CTFrameDraw(data.ctFrame, context);
     
 }
