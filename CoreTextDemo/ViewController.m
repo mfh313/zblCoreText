@@ -42,24 +42,25 @@
     [_contentScrollView addSubview:richTextView1];
     [richTextView1 setNeedsDisplay];
     
-//    MFDiagnosticQuestionDataItem *dataItem2 = datas[1];
-//    MFDiagnosticQuestionDataItem *dataItem3 = datas[2];
-//    
-//    CGRect richTextViewFrame2 = CGRectMake(10,CGRectGetMaxY(richTextView1.frame) + 10, CGRectGetWidth(self.view.bounds)-20, 200);
-//    MFCoreTextView *richTextView2 = [self coreTextView:richTextViewFrame2 dataItem:dataItem2];
-//    richTextView2.backgroundColor = [UIColor purpleColor];
-//    [_contentScrollView addSubview:richTextView2];
-//    
-//    CGRect richTextViewFrame3 = CGRectMake(10,CGRectGetMaxY(richTextView2.frame) + 10, CGRectGetWidth(self.view.bounds)-20, 200);
-//    MFCoreTextView *richTextView3 = [self coreTextView:richTextViewFrame3 dataItem:dataItem3];
-//    richTextView3.backgroundColor = [UIColor grayColor];
-//    [_contentScrollView addSubview:richTextView3];
-//    
-//
-//    [richTextView2 setNeedsDisplay];
-//    [richTextView3 setNeedsDisplay];
+    MFDiagnosticQuestionDataItem *dataItem2 = datas[1];
+    MFDiagnosticQuestionDataItem *dataItem3 = datas[2];
     
-    CGFloat maxY = CGRectGetMaxY(richTextView1.frame);
+    CGRect richTextViewFrame2 = CGRectMake(10,CGRectGetMaxY(richTextView1.frame) + 10, CGRectGetWidth(self.view.bounds)-20, 200);
+    MFCoreTextView *richTextView2 = [self coreTextView:richTextViewFrame2 dataItem:dataItem2];
+    richTextView2.backgroundColor = [UIColor purpleColor];
+    [_contentScrollView addSubview:richTextView2];
+    
+    CGRect richTextViewFrame3 = CGRectMake(10,CGRectGetMaxY(richTextView2.frame) + 10, CGRectGetWidth(self.view.bounds)-20, 200);
+    MFCoreTextView *richTextView3 = [self coreTextView:richTextViewFrame3 dataItem:dataItem3];
+    richTextView3.backgroundColor = [UIColor grayColor];
+    [_contentScrollView addSubview:richTextView3];
+    
+
+    [richTextView2 setNeedsDisplay];
+    [richTextView3 setNeedsDisplay];
+    
+    UIView *lastView = richTextView3;
+    CGFloat maxY = CGRectGetMaxY(lastView.frame);
     _contentScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.bounds), 30 + maxY);
     
     
