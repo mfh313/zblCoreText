@@ -150,8 +150,8 @@
     CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
     [string addAttribute:(id)kCTKernAttributeName value:(__bridge id)num range:NSMakeRange(0, string.length)];
     
-    //首行缩进,图片偏移
-    CGFloat firstLineIndentSize = 10.0f;      //TODO:图片最左边偏移，后面存json
+    //首行缩进           图片偏移
+    CGFloat firstLineIndentSize = 20.0f;      //TODO:图片最左边偏移，后面存json
     CTParagraphStyleSetting firstLineIndent;
     firstLineIndent.spec = kCTParagraphStyleSpecifierFirstLineHeadIndent;
     firstLineIndent.valueSize = sizeof(CGFloat);

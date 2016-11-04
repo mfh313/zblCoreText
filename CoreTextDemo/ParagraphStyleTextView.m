@@ -23,14 +23,14 @@
     
     
     //首行缩进
-    CGFloat firstLineIndentSize = 100.0f;
+    CGFloat firstLineIndentSize = 20.0f;
     CTParagraphStyleSetting firstLineIndent;
     firstLineIndent.spec = kCTParagraphStyleSpecifierFirstLineHeadIndent;
     firstLineIndent.valueSize = sizeof(CGFloat);
     firstLineIndent.value = &firstLineIndentSize;
     
     //段前缩进
-    CGFloat headIndentSize = 100.0f;
+    CGFloat headIndentSize = 30.0f;
     CTParagraphStyleSetting headIndent;
     headIndent.spec = kCTParagraphStyleSpecifierHeadIndent;
     headIndent.valueSize = sizeof(CGFloat);
@@ -50,17 +50,10 @@
     paragraghInterval.valueSize = sizeof(CGFloat);
     paragraghInterval.value = &paragraghSpace;
     
-    //换行模式
-    CTLineBreakMode lineBreak = kCTLineBreakByClipping;
-    CTParagraphStyleSetting lineBreakMode;
-    lineBreakMode.spec = kCTParagraphStyleSpecifierLineBreakMode;
-    lineBreakMode.value = &lineBreak;
-    lineBreakMode.valueSize = sizeof(CTLineBreakMode);
     
-    
-    const CFIndex kNumberOfSettings = 5;
+    const CFIndex kNumberOfSettings = 4;
     CTParagraphStyleSetting theSettings[] = {
-        firstLineIndent,headIndent,paragraghInterval,spacingBefore,lineBreakMode
+        firstLineIndent,headIndent,paragraghInterval,spacingBefore
     };
     
     CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
