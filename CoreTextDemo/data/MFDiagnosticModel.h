@@ -30,6 +30,7 @@
 @property (nonatomic,assign) NSUInteger minSelectedCount;
 @property (nonatomic,assign) NSUInteger contentImageWidth;
 @property (nonatomic,assign) NSUInteger contentImageHeight;
+@property (nonatomic,assign) NSUInteger contentDescriptionMaxWidth;
 
 @property (nonatomic,assign) NSInteger itemWidth;
 @property (nonatomic,assign) NSInteger itemHeight;

@@ -85,11 +85,15 @@
         __block CGFloat contentDescriptionMaxHeight = 0;
         [contentArray enumerateObjectsUsingBlock:^(MFDiagnosticQuestionContentDataItem *obj, NSUInteger idx, BOOL * _Nonnull stop) {
             CGFloat width = [self contentDescriptionWidth:obj.contentDescription];
+            if (dataItem.contentDescriptionMaxWidth > 0) {
+                width = [obj.contentDescription MFSizeWithFont:MFDiagnosticFont maxSize:CGSizeMake(dataItem.contentDescriptionMaxWidth, MAXFLOAT)].width;
+            }
+            
             if (width > contentDescriptionWidth) {
                 contentDescriptionWidth = width;
             }
             
-            CGFloat height = [obj.contentDescription MFSizeWithFont:MFDiagnosticFont maxSize:CGSizeMake(dataItem.itemWidth - 10, MAXFLOAT)].height;
+            CGFloat height = [obj.contentDescription MFSizeWithFont:MFDiagnosticFont maxSize:CGSizeMake(contentDescriptionWidth, MAXFLOAT)].height;
             if (height > contentDescriptionMaxHeight) {
                 contentDescriptionMaxHeight = height;
             }

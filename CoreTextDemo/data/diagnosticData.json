@@ -551,6 +551,7 @@
                   "minSelectedCount": 1,
                   "contentImageWidth": 170,
                   "contentImageHeight": 215,
+                  "contentDescriptionMaxWidth": 200,
                   "contents": [
                                {
                                "realMatch": "A",
@@ -831,6 +832,7 @@
                   "minSelectedCount": 1,
                   "contentImageWidth": 172,
                   "contentImageHeight": 300,
+                  "contentDescriptionMaxWidth": 260,
                   "contents": [
                                {
                                "realMatch": "A",

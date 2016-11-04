@@ -57,12 +57,21 @@
 + (NSMutableDictionary *)attributesWithConfig:(MFFrameParserConfig *)config {
     CGFloat fontSize = config.fontSize;
     CTFontRef fontRef = [self ctFontRefFromUIFont:[UIFont systemFontOfSize:fontSize]];
+    
+    CGFloat headindent = 50.0f;
+    CTParagraphStyleSetting head;
+    head.spec = kCTParagraphStyleSpecifierHeadIndent;
+    head.value = &headindent;
+    head.valueSize = sizeof(float);
+    
+    
     CGFloat lineSpacing = config.lineSpace;
-    const CFIndex kNumberOfSettings = 3;
+    const CFIndex kNumberOfSettings = 4;
     CTParagraphStyleSetting theSettings[kNumberOfSettings] = {
         { kCTParagraphStyleSpecifierLineSpacingAdjustment, sizeof(CGFloat), &lineSpacing },
         { kCTParagraphStyleSpecifierMaximumLineSpacing, sizeof(CGFloat), &lineSpacing },
-        { kCTParagraphStyleSpecifierMinimumLineSpacing, sizeof(CGFloat), &lineSpacing }
+        { kCTParagraphStyleSpecifierMinimumLineSpacing, sizeof(CGFloat), &lineSpacing },
+        head
     };
     
     CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
@@ -144,7 +153,7 @@
         if (i != contentItem.count - 1) {
             if ((i + 1) % columnCount == 0)
             {
-//                [string appendAttributedString:nAttr];
+                [string appendAttributedString:nAttr];
 //                [string appendAttributedString:space];
             }
             else
@@ -155,19 +164,19 @@
     }
     
     //段缩进
-    CGFloat headindent = 100.0f;
+    CGFloat headindent = 50.0f;    
     CTParagraphStyleSetting head;
     head.spec = kCTParagraphStyleSpecifierHeadIndent;
     head.value = &headindent;
     head.valueSize = sizeof(float);
     
-    const CFIndex kNumberOfSettings = 5;
-    CGFloat lineSpacing = 10;
-    CTParagraphStyleSetting theSettings[kNumberOfSettings] = {
+    const CFIndex kNumberOfSettings = 4;
+    CGFloat lineSpacing = 100;
+    CTParagraphStyleSetting theSettings[] = {
         { kCTParagraphStyleSpecifierLineSpacingAdjustment, sizeof(CGFloat), &lineSpacing },
         { kCTParagraphStyleSpecifierMaximumLineSpacing, sizeof(CGFloat), &lineSpacing },
         { kCTParagraphStyleSpecifierMinimumLineSpacing, sizeof(CGFloat), &lineSpacing },
-        headindent
+        head
     };
     
     CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
@@ -175,11 +184,6 @@
     
     // set attributes to attributed string
     [string addAttributes:attributes range:NSMakeRange(0, string.length)];
-    
-    //设置字体间隔
-    long number = 5;
-    CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
-    [string addAttribute:(id)kCTKernAttributeName value:(__bridge id _Nonnull)(num) range:NSMakeRange(0, string.length)];
     
     return string;
 }

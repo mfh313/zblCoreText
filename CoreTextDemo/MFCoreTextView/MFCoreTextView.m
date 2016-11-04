@@ -111,10 +111,10 @@
             CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
             CGContextFillRect(context, delegateBounds);
             
-            CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
+            CGContextSetFillColorWithColor(context, [UIColor yellowColor].CGColor);
             CGContextFillRect(context, imageRect);
             
-            CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
+            CGContextSetFillColorWithColor(context, [UIColor blueColor].CGColor);
             CGContextFillRect(context, contentDescriptionRect);
             
             CGContextDrawImage(context, imageRect, content.CGImage);
