@@ -113,7 +113,6 @@
     CTFrameRef frame = [self createFrameWithFramesetter:framesetter config:config orignY:0 height:titleHeight];
     
     
-    
     MFDiagnosticCoreTextData *coreTextData = [MFDiagnosticCoreTextData new];
     coreTextData.ctFrame = frame;
     coreTextData.height = titleHeight;
@@ -132,7 +131,6 @@
     NSMutableAttributedString *space = [[NSMutableAttributedString alloc] initWithString:MFTextAttachmentToken];
     
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
-    [string appendAttributedString:space];
     
     for (int i = 0; i < contentItem.count; i++) {
         MFDiagnosticQuestionContentDataItem *item = (MFDiagnosticQuestionContentDataItem *)contentItem[i];
@@ -146,18 +144,18 @@
         if (i != contentItem.count - 1) {
             if ((i + 1) % columnCount == 0)
             {
-                [string appendAttributedString:nAttr];
-                [string appendAttributedString:space];
+//                [string appendAttributedString:nAttr];
+//                [string appendAttributedString:space];
             }
             else
             {
-                [string appendAttributedString:space];
+//                [string appendAttributedString:space];
             }
         }
     }
     
     //段缩进
-    CGFloat headindent = 30.0f;
+    CGFloat headindent = 100.0f;
     CTParagraphStyleSetting head;
     head.spec = kCTParagraphStyleSpecifierHeadIndent;
     head.value = &headindent;
