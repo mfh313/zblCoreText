@@ -46,7 +46,7 @@
 
 -(void)readjsonData
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"diagnosticData_1" ofType:@"json"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"diagnosticData" ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:path];
     
     NSDictionary *jsonDataDic = [NSJSONSerialization JSONObjectWithData:data

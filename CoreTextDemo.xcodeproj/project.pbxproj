@@ -17,7 +17,7 @@
 		AC8A7F301DC865FF00328CC3 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8A7F2E1DC865FF00328CC3 /* CoreFoundation.framework */; };
 		AC8A7F311DC865FF00328CC3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8A7F2F1DC865FF00328CC3 /* Foundation.framework */; };
 		AC8A7F331DC8660B00328CC3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8A7F321DC8660B00328CC3 /* UIKit.framework */; };
-		AC8A7F3F1DC88F6300328CC3 /* diagnosticData_1.json in Resources */ = {isa = PBXBuildFile; fileRef = AC8A7F3B1DC88F6300328CC3 /* diagnosticData_1.json */; };
+		AC8A7F3F1DC88F6300328CC3 /* diagnosticData.json in Resources */ = {isa = PBXBuildFile; fileRef = AC8A7F3B1DC88F6300328CC3 /* diagnosticData.json */; };
 		AC8A7F401DC88F6300328CC3 /* diagnostisImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AC8A7F3C1DC88F6300328CC3 /* diagnostisImage.bundle */; };
 		AC8A7F411DC88F6300328CC3 /* MFCustomerDiagnosticLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F3E1DC88F6300328CC3 /* MFCustomerDiagnosticLogic.m */; };
 		AC8A7F441DC88FBE00328CC3 /* MFDiagnosticModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F431DC88FBE00328CC3 /* MFDiagnosticModel.m */; };
@@ -50,7 +50,7 @@
 		AC8A7F2E1DC865FF00328CC3 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		AC8A7F2F1DC865FF00328CC3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AC8A7F321DC8660B00328CC3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		AC8A7F3B1DC88F6300328CC3 /* diagnosticData_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = diagnosticData_1.json; sourceTree = "<group>"; };
+		AC8A7F3B1DC88F6300328CC3 /* diagnosticData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = diagnosticData.json; sourceTree = "<group>"; };
 		AC8A7F3C1DC88F6300328CC3 /* diagnostisImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = diagnostisImage.bundle; sourceTree = "<group>"; };
 		AC8A7F3D1DC88F6300328CC3 /* MFCustomerDiagnosticLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCustomerDiagnosticLogic.h; sourceTree = "<group>"; };
 		AC8A7F3E1DC88F6300328CC3 /* MFCustomerDiagnosticLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFCustomerDiagnosticLogic.m; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				AC8A7F471DC891CE00328CC3 /* YYModel */,
-				AC8A7F3B1DC88F6300328CC3 /* diagnosticData_1.json */,
+				AC8A7F3B1DC88F6300328CC3 /* diagnosticData.json */,
 				AC8A7F3C1DC88F6300328CC3 /* diagnostisImage.bundle */,
 				AC8A7F3D1DC88F6300328CC3 /* MFCustomerDiagnosticLogic.h */,
 				AC8A7F3E1DC88F6300328CC3 /* MFCustomerDiagnosticLogic.m */,
@@ -266,7 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC8A7F401DC88F6300328CC3 /* diagnostisImage.bundle in Resources */,
-				AC8A7F3F1DC88F6300328CC3 /* diagnosticData_1.json in Resources */,
+				AC8A7F3F1DC88F6300328CC3 /* diagnosticData.json in Resources */,
 				AC8A7F211DC837F000328CC3 /* LaunchScreen.storyboard in Resources */,
 				AC8A7F1E1DC837F000328CC3 /* Assets.xcassets in Resources */,
 				AC8A7F1C1DC837F000328CC3 /* Main.storyboard in Resources */,
