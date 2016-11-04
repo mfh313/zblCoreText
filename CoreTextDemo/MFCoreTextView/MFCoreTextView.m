@@ -65,13 +65,16 @@ static dispatch_queue_t MFCoreTextViewGetReleaseQueue() {
     [self drawContentDescription:context];
     
     
-    MFDiagnosticQuestionContentDataItem *contentItem = self.contentItem;
+    MFDiagnosticQuestionContentDataItem *contentItem = self.dataItem.diagnosticContentArray[2];
     
     MFFrameParserConfig *config = [[MFFrameParserConfig alloc] init];
-    config.width = 85;
-    MFDiagnosticCoreTextData *data = [MFDiagnosticDataParser parseContentDescription:contentItem
-                                                                              config:config
-                                                                          lineOrigin:CGPointMake(20, 0)];
+    config.fontSize = 15.0;
+    config.lineSpace = 0;
+    config.textColor = [UIColor redColor];
+    MFDiagnosticCoreTextData *data = [MFDiagnosticDataParser
+                                      parseContentDescription:contentItem
+                                      config:config
+                                      fillRect:CGRectMake(426, 0, 171, 39)];
     CTFrameDraw(data.ctFrame, context);
     
 }
@@ -138,7 +141,9 @@ static dispatch_queue_t MFCoreTextViewGetReleaseQueue() {
             
             CGRect imageRect = CGRectMake(delegateBounds.origin.x + (CGRectGetWidth(delegateBounds)-dataItem.contentImageWidth)/2, delegateBounds.origin.y + CGRectGetHeight(delegateBounds) - dataItem.contentImageHeight, dataItem.contentImageWidth, dataItem.contentImageHeight);
             
-            CGRect contentDescriptionRect = CGRectMake(imageRect.origin.x, delegateBounds.origin.y, imageRect.size.width, CGRectGetHeight(delegateBounds) - dataItem.contentImageHeight - 10);
+            CGRect contentDescriptionRect = CGRectMake(delegateBounds.origin.x + 10, delegateBounds.origin.y, CGRectGetWidth(delegateBounds) - 20, CGRectGetHeight(delegateBounds) - dataItem.contentImageHeight - 10);
+            
+            NSLog(@"contentDescriptionRect=%@",NSStringFromCGRect(contentDescriptionRect));
             
             //测试填充颜色
             CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
@@ -147,7 +152,7 @@ static dispatch_queue_t MFCoreTextViewGetReleaseQueue() {
             CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);
             CGContextFillRect(context, imageRect);
             
-            CGContextSetFillColorWithColor(context, [UIColor blueColor].CGColor);
+            CGContextSetFillColorWithColor(context, [UIColor lightGrayColor].CGColor);
             CGContextFillRect(context, contentDescriptionRect);
             
             CGContextDrawImage(context, imageRect, content.CGImage);

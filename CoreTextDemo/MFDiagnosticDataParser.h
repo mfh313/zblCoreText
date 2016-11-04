@@ -22,6 +22,6 @@
 
 + (MFDiagnosticCoreTextData *)parseContentDescription:(MFDiagnosticQuestionContentDataItem *)dataItem
                                                config:(MFFrameParserConfig*)config
-                                           lineOrigin:(CGPoint)lineOrigin;
+                                             fillRect:(CGRect)fillRect;
 
 @end

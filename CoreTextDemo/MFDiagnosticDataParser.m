@@ -247,17 +247,35 @@
 
 + (MFDiagnosticCoreTextData *)parseContentDescription:(MFDiagnosticQuestionContentDataItem *)dataItem
                                     config:(MFFrameParserConfig*)config
-                                lineOrigin:(CGPoint)lineOrigin
+                                fillRect:(CGRect)fillRect
 {
+    config.width = fillRect.size.width;
+    
     NSMutableDictionary *attributes = [self attributesWithConfig:config];
-    NSAttributedString *attr = [[NSAttributedString alloc] initWithString:dataItem.contentDescription attributes:attributes];
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:dataItem.contentDescription attributes:attributes];
+
+    CTTextAlignment alignment = kCTCenterTextAlignment;
+    CTParagraphStyleSetting alignmentStyle;
+    alignmentStyle.spec = kCTParagraphStyleSpecifierAlignment;
+    alignmentStyle.valueSize = sizeof(alignment);
+    alignmentStyle.value = &alignment;
+    const CFIndex kNumberOfSettings = 1;
+    CTParagraphStyleSetting theSettings[kNumberOfSettings] = {
+        alignmentStyle
+    };
+    
+    CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
+    NSMutableDictionary *theParagraphRefattributes = [NSMutableDictionary dictionaryWithObject:(id)theParagraphRef forKey:(id)kCTParagraphStyleAttributeName];
+    
+    [attr addAttributes:theParagraphRefattributes range:NSMakeRange(0, attr.length)];
+    
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attr);
     CGSize restrictSize = CGSizeMake(config.width, CGFLOAT_MAX);
     CGSize coreTextSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), nil, restrictSize, nil);
     CGFloat titleHeight = coreTextSize.height;
     
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathAddRect(path, NULL, CGRectMake(lineOrigin.x, lineOrigin.y, config.width, titleHeight));
+    CGPathAddRect(path, NULL, fillRect);
     
     CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
 

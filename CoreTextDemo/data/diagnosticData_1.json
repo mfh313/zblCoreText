@@ -556,19 +556,19 @@
                                "realMatch": "A",
                                "imageName": "11A",
                                "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/11A@2x.png",
-                               "contentDescription": "A、眼睛、嘴巴较大，鼻子挺，\n眉毛浓，唇色艳，立体感强\n（包括化妆后的效果）"
+                               "contentDescription": "A、眼睛、嘴巴较大，鼻子挺，眉毛浓，唇色艳，立体感强（包括化妆后的效果）"
                                },
                                {
                                "realMatch": "B",
                                "imageName": "11B",
                                "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/11B@2x.png",
-                               "contentDescription": "B、面部色差中等，立体感中等，\n介于A、C之间（可能有淡妆）"
+                               "contentDescription": "B、面部色差中等，立体感中等，介于A、C之间（可能有淡妆）"
                                },
                                {
                                "realMatch": "C",
                                "imageName": "11C",
                                "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/11C@2x.png",
-                               "contentDescription": "C、眼睛、嘴巴较小，鼻梁较平，\n眉毛浅淡（通常没有化妆）"
+                               "contentDescription": "C、眼睛、嘴巴较小，鼻梁较平，眉毛浅淡（通常没有化妆）"
                                }
                                ]
                   },
@@ -836,31 +836,31 @@
                                "realMatch": "A",
                                "imageName": "19A",
                                "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/19A@2x.png",
-                               "contentDescription": "A、A型\n（肩比臀部窄小，腰部以下变宽）"
+                               "contentDescription": "A型\n（肩比臀部窄小，腰部以下变宽）"
                                },
                                {
                                "realMatch": "B",
                                "imageName": "19Y",
                                "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/19Y@2x.png",
-                               "contentDescription": "B、Y型\n（肩部较宽，臀部较窄）"
+                               "contentDescription": "Y型\n（肩部较宽，臀部较窄）"
                                },
                                {
                                "realMatch": "C",
                                "imageName": "19X",
                                "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/19X@2x.png",
-                               "contentDescription": "C、X型\n（肩部与臀部宽窄相近，有明显细腰）"
+                               "contentDescription": "X型\n（肩部与臀部宽窄相近，有明显细腰）"
                                },
                                {
                                "realMatch": "D",
                                "imageName": "19H",
                                "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/19H@2x.png",
-                               "contentDescription": "D、H型\n（胸、腰、臀三围差别小，腰部无明显曲线）"
+                               "contentDescription": "H型\n（胸、腰、臀三围差别小，腰部无明显曲线）"
                                },
                                {
                                "realMatch": "E",
                                "imageName": "19O",
                                "imageUrl": "http://bloombeauty-fileserver.eeka.info/diagnosticImage/image1/19O@2x.png",
-                               "contentDescription": "E、O型\n（胸、腰、臀三围圆润丰满，腰腹部突出）"
+                               "contentDescription": "O型\n（胸、腰、臀三围圆润丰满，腰腹部突出）"
                                }
                                ]
                   }

@@ -10,7 +10,7 @@
 #import "MFDiagnosticCoreTextData.h"
 
 
-@class MFDiagnosticQuestionContentDataItem;
+@class MFDiagnosticQuestionDataItem;
 @interface MFCoreTextView : UIView
 {
     NSMutableArray *_itemViews;
@@ -18,6 +18,6 @@
 
 @property (strong, nonatomic) MFDiagnosticCoreTextData * data;
 
-@property (strong, nonatomic) MFDiagnosticQuestionContentDataItem * contentItem;
+@property (strong, nonatomic) MFDiagnosticQuestionDataItem * dataItem;
 
 @end
