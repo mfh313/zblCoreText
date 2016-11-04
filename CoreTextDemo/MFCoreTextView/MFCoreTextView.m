@@ -22,10 +22,18 @@
     if (self) {
         _itemViews = [NSMutableArray array];
         for (int i = 0; i < 1; i++) {
-            UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"zbl35"]];
-            [_itemViews addObject:imageView];
             
-            imageView.frame = CGRectMake(0, 0, imageView.image.size.width, imageView.image.size.height);
+            UIImage *coverImage = [UIImage imageNamed:@"zbl35"];
+            UIImageView *converView = [[UIImageView alloc] initWithImage:coverImage];
+            converView.frame = CGRectMake(0, 0, coverImage.size.width, coverImage.size.height);
+            [_itemViews addObject:converView];
+            
+            UIImage *tipImage = [UIImage imageNamed:@"zbl23"];
+            UIImageView *tipImageView = [[UIImageView alloc] initWithImage:tipImage];
+            converView.frame = CGRectMake(CGRectGetWidth(converView.frame) - 30 - tipImage.size.width, CGRectGetHeight(converView.frame) - 30 - tipImage.size.height, tipImage.size.width, tipImage.size.height);
+            tipImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
+            [converView addSubview:tipImageView];
+            
         }
     }
     
@@ -200,37 +208,18 @@
     self.userInteractionEnabled = YES;
 }
 
-- (void)userTapGestureDetected:(UIGestureRecognizer *)recognizer {
+- (void)userTapGestureDetected:(UIGestureRecognizer *)recognizer
+{
     CGPoint point = [recognizer locationInView:self];
-//    if (_state == CTDisplayViewStateNormal) {
-//        for (CoreTextImageData * imageData in self.data.imageArray) {
-//            // 翻转坐标系，因为imageData中的坐标是CoreText的坐标系
-//            CGRect imageRect = imageData.imagePosition;
-//            CGPoint imagePosition = imageRect.origin;
-//            imagePosition.y = self.bounds.size.height - imageRect.origin.y - imageRect.size.height;
-//            CGRect rect = CGRectMake(imagePosition.x, imagePosition.y, imageRect.size.width, imageRect.size.height);
-//            // 检测点击位置 Point 是否在rect之内
-//            if (CGRectContainsPoint(rect, point)) {
-//                NSLog(@"hint image");
-//                // 在这里处理点击后的逻辑
-//                NSDictionary *userInfo = @{ @"imageData": imageData };
-//                [[NSNotificationCenter defaultCenter] postNotificationName:CTDisplayViewImagePressedNotification
-//                                                                    object:self userInfo:userInfo];
-//                return;
-//            }
-//        }
-//        
-//        CoreTextLinkData *linkData = [CoreTextUtils touchLinkInView:self atPoint:point data:self.data];
-//        if (linkData) {
-//            NSLog(@"hint link!");
-//            NSDictionary *userInfo = @{ @"linkData": linkData };
-//            [[NSNotificationCenter defaultCenter] postNotificationName:CTDisplayViewLinkPressedNotification
-//                                                                object:self userInfo:userInfo];
-//            return;
-//        }
-//    } else {
-//        self.state = CTDisplayViewStateNormal;
-//    }
+    
+//    UIView *tipsView = _itemViews[0];
+//    CGRect tipsFrame = tipsView.frame;
+//    tipsFrame.origin = point;
+//    tipsFrame.size = CGSizeMake(85, 85);
+//    
+//    tipsView.frame = tipsFrame;
+//    [self addSubview:tipsView];
+    
 }
 
 @end
