@@ -15,6 +15,7 @@
 #import "MFDiagnosticCoreContentTextData.h"
 #import "MFDiagnosticCoreContentImageData.h"
 
+//    CTFontRef fontRef = CTFontCreateWithName((CFStringRef)@"ArialMT", fontSize, NULL);
 
 @implementation MFDiagnosticDataParser
 
@@ -53,7 +54,6 @@
     return CFAutorelease(ctfont);
 }
 
-//    CTFontRef fontRef = CTFontCreateWithName((CFStringRef)@"ArialMT", fontSize, NULL);
 + (NSMutableDictionary *)attributesWithConfig:(MFFrameParserConfig *)config {
     CGFloat fontSize = config.fontSize;
     CTFontRef fontRef = [self ctFontRefFromUIFont:[UIFont systemFontOfSize:fontSize]];
