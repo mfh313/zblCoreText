@@ -832,7 +832,7 @@
                   "minSelectedCount": 1,
                   "contentImageWidth": 172,
                   "contentImageHeight": 300,
-                  "contentDescriptionMaxWidth": 260,
+                  "contentDescriptionMaxWidth": 300,
                   "contents": [
                                {
                                "realMatch": "A",
