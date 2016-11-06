@@ -99,7 +99,7 @@
     
     NSRange titleRange = NSMakeRange(0, titleAttr.length);
     NSMutableParagraphStyle *titleParagraphStyle = [NSMutableParagraphStyle new];
-    titleParagraphStyle.firstLineHeadIndent = 30.0f;  //首行缩进
+    titleParagraphStyle.firstLineHeadIndent = 15.0f;  //首行缩进
     titleParagraphStyle.headIndent = 0.0f;          //每行缩进
     titleParagraphStyle.lineSpacing = 2.0f;    //行距
     titleParagraphStyle.paragraphSpacing = 20.0f;    //段前间隔,段与段之间的距离
