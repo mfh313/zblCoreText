@@ -15,88 +15,21 @@
 #import "MFDiagnosticCoreContentTextData.h"
 #import "MFDiagnosticCoreContentImageData.h"
 
-//    CTFontRef fontRef = CTFontCreateWithName((CFStringRef)@"ArialMT", fontSize, NULL);
-
 @implementation MFDiagnosticDataParser
-
-+(NSMutableAttributedString *)_textWithString:(NSMutableAttributedString *)text withRemarkColor:(UIColor *)remarkColor
-{
-    NSMutableAttributedString *mText = text;
-    
-    NSArray *bracketsResults = [[[self class] regexBrackets] matchesInString:mText.string options:kNilOptions range:NSMakeRange(0, mText.length)];
-    for (NSTextCheckingResult *brackets in bracketsResults) {
-        NSRange bracketsRange = brackets.range;
-        [mText addAttribute:(id)kCTForegroundColorAttributeName value:remarkColor range:bracketsRange];
-    }
-    
-    
-    return mText;
-}
-
-+ (NSRegularExpression *)regexBrackets {
-    static NSRegularExpression *regex;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        //匹配括号内的内容
-        regex = [NSRegularExpression regularExpressionWithPattern:@"\\（.*\\）" options:kNilOptions error:NULL];
-    });
-    return regex;
-}
-
-+ (UIFont *)uifontFromCTFontRef:(CTFontRef)ctFont {
-    CGFloat pointSize = CTFontGetSize(ctFont);
-    NSString *fontPostScriptName = (NSString *)CFBridgingRelease(CTFontCopyPostScriptName(ctFont));
-    UIFont *fontFromCTFont = [UIFont fontWithName:fontPostScriptName size:pointSize];
-    return fontFromCTFont;
-}
-
-+ (CTFontRef)ctFontRefFromUIFont:(UIFont *)font {
-    CTFontRef ctfont = CTFontCreateWithName((__bridge CFStringRef)font.fontName, font.pointSize, NULL);
-    return CFAutorelease(ctfont);
-}
-
-+ (NSMutableDictionary *)attributesWithConfig:(MFFrameParserConfig *)config {
-    CGFloat fontSize = config.fontSize;
-    CTFontRef fontRef = [self ctFontRefFromUIFont:[UIFont systemFontOfSize:fontSize]];
-    
-
-    CGFloat lineSpacing = config.lineSpace;
-    const CFIndex kNumberOfSettings = 3;
-    CTParagraphStyleSetting theSettings[kNumberOfSettings] = {
-        { kCTParagraphStyleSpecifierLineSpacingAdjustment, sizeof(CGFloat), &lineSpacing },
-        { kCTParagraphStyleSpecifierMaximumLineSpacing, sizeof(CGFloat), &lineSpacing },
-        { kCTParagraphStyleSpecifierMinimumLineSpacing, sizeof(CGFloat), &lineSpacing }
-    };
-    
-    CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
-    
-    UIColor * textColor = config.textColor;
-    
-    NSMutableDictionary * dict = [NSMutableDictionary dictionary];
-    dict[(id)kCTForegroundColorAttributeName] = (id)textColor.CGColor;
-    dict[(id)kCTFontAttributeName] = (__bridge id)fontRef;
-    dict[(id)kCTParagraphStyleAttributeName] = (__bridge id)theParagraphRef;
-    
-    CFRelease(theParagraphRef);
-    return dict;
-}
 
 //TODO:整体排版包括间隔需要后期优化，先不管
 + (MFDiagnosticCoreTextData *)parseContent:(MFDiagnosticQuestionDataItem *)dataItem
                                     config:(MFFrameParserConfig*)config
 {
-    
-    
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
     
     NSMutableDictionary *attributes = [self attributesWithConfig:config];
     
-    NSMutableAttributedString *titleAttr = [[NSMutableAttributedString alloc] initWithAttributedString:string];
-    
+    NSMutableAttributedString *titleAttr = [[NSMutableAttributedString alloc] initWithAttributedString:dataItem.showingTitleDescription];
     [titleAttr setAttributes:attributes range:NSMakeRange(0, titleAttr.length)];
     
     //fix color
-    titleAttr = [self _textWithString:titleAttr withRemarkColor:[UIColor redColor]];
+    titleAttr = [self _textWithString:titleAttr withRemarkColor:[UIColor hx_colorWithHexString:@"e93871"]];
     
     
     NSRange titleRange = NSMakeRange(0, titleAttr.length);
@@ -231,6 +164,8 @@
     
     NSMutableDictionary *attributes = [self attributesWithConfig:config];
     NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:dataItem.contentDescription attributes:attributes];
+    
+    attr = [self _textWithString:attr withRemarkColor:[UIColor hx_colorWithHexString:@"e93871"]];
 
     CTTextAlignment alignment = kCTCenterTextAlignment;
     CTParagraphStyleSetting alignmentStyle;
@@ -278,5 +213,68 @@
     CFRelease(path);
     return frame;
 }
+
++(NSMutableAttributedString *)_textWithString:(NSMutableAttributedString *)text withRemarkColor:(UIColor *)remarkColor
+{
+    NSMutableAttributedString *mText = text;
+    
+    NSArray *bracketsResults = [[[self class] regexBrackets] matchesInString:mText.string options:kNilOptions range:NSMakeRange(0, mText.length)];
+    for (NSTextCheckingResult *brackets in bracketsResults) {
+        NSRange bracketsRange = brackets.range;
+        [mText addAttribute:(id)kCTForegroundColorAttributeName value:remarkColor range:bracketsRange];
+    }
+    
+    
+    return mText;
+}
+
++ (NSRegularExpression *)regexBrackets {
+    static NSRegularExpression *regex;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        //匹配括号内的内容
+        regex = [NSRegularExpression regularExpressionWithPattern:@"\\（.*\\）" options:kNilOptions error:NULL];
+    });
+    return regex;
+}
+
++ (UIFont *)uifontFromCTFontRef:(CTFontRef)ctFont {
+    CGFloat pointSize = CTFontGetSize(ctFont);
+    NSString *fontPostScriptName = (NSString *)CFBridgingRelease(CTFontCopyPostScriptName(ctFont));
+    UIFont *fontFromCTFont = [UIFont fontWithName:fontPostScriptName size:pointSize];
+    return fontFromCTFont;
+}
+
++ (CTFontRef)ctFontRefFromUIFont:(UIFont *)font {
+    CTFontRef ctfont = CTFontCreateWithName((__bridge CFStringRef)font.fontName, font.pointSize, NULL);
+    return CFAutorelease(ctfont);
+}
+
++ (NSMutableDictionary *)attributesWithConfig:(MFFrameParserConfig *)config {
+    CGFloat fontSize = config.fontSize;
+    CTFontRef fontRef = [self ctFontRefFromUIFont:[UIFont systemFontOfSize:fontSize]];
+    
+    
+    CGFloat lineSpacing = config.lineSpace;
+    const CFIndex kNumberOfSettings = 3;
+    CTParagraphStyleSetting theSettings[kNumberOfSettings] = {
+        { kCTParagraphStyleSpecifierLineSpacingAdjustment, sizeof(CGFloat), &lineSpacing },
+        { kCTParagraphStyleSpecifierMaximumLineSpacing, sizeof(CGFloat), &lineSpacing },
+        { kCTParagraphStyleSpecifierMinimumLineSpacing, sizeof(CGFloat), &lineSpacing }
+    };
+    
+    CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
+    
+    UIColor * textColor = config.textColor;
+    
+    NSMutableDictionary * dict = [NSMutableDictionary dictionary];
+    dict[(id)kCTForegroundColorAttributeName] = (id)textColor.CGColor;
+    dict[(id)kCTFontAttributeName] = (__bridge id)fontRef;
+    dict[(id)kCTParagraphStyleAttributeName] = (__bridge id)theParagraphRef;
+    
+    CFRelease(theParagraphRef);
+    return dict;
+}
+//    CTFontRef fontRef = CTFontCreateWithName((CFStringRef)@"ArialMT", fontSize, NULL);
 
 @end
