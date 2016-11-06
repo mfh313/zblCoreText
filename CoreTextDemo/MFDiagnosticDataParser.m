@@ -19,15 +19,16 @@
 
 @implementation MFDiagnosticDataParser
 
-+(NSMutableAttributedString *)_textWithString:(NSString *)text WithRemarkColor:(UIColor *)remarkColor
++(NSMutableAttributedString *)_textWithString:(NSMutableAttributedString *)text withRemarkColor:(UIColor *)remarkColor
 {
-    NSMutableAttributedString *mText = [[NSMutableAttributedString alloc] initWithString:text];
+    NSMutableAttributedString *mText = text;
     
     NSArray *bracketsResults = [[[self class] regexBrackets] matchesInString:mText.string options:kNilOptions range:NSMakeRange(0, mText.length)];
     for (NSTextCheckingResult *brackets in bracketsResults) {
         NSRange bracketsRange = brackets.range;
-        [mText addAttribute:NSForegroundColorAttributeName value:remarkColor range:bracketsRange];
+        [mText addAttribute:(id)kCTForegroundColorAttributeName value:remarkColor range:bracketsRange];
     }
+    
     
     return mText;
 }
@@ -37,7 +38,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         //匹配括号内的内容
-        regex = [NSRegularExpression regularExpressionWithPattern:@"\（.*\）" options:kNilOptions error:NULL];
+        regex = [NSRegularExpression regularExpressionWithPattern:@"\\（.*\\）" options:kNilOptions error:NULL];
     });
     return regex;
 }
@@ -80,22 +81,23 @@
     return dict;
 }
 
-+ (NSMutableDictionary *)attributesWithDefaultConfig
-{
-    MFFrameParserConfig *defaultConfig = [MFFrameParserConfig new];
-    return [self attributesWithConfig:defaultConfig];
-}
-
 //TODO:整体排版包括间隔需要后期优化，先不管
 + (MFDiagnosticCoreTextData *)parseContent:(MFDiagnosticQuestionDataItem *)dataItem
                                     config:(MFFrameParserConfig*)config
 {
-    NSMutableDictionary *attributes = [self attributesWithConfig:config];
+    
     
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
     
-    NSMutableAttributedString *titleAttr = [[NSMutableAttributedString alloc] initWithAttributedString:dataItem.showingTitleDescription];
+    NSMutableDictionary *attributes = [self attributesWithConfig:config];
+    
+    NSMutableAttributedString *titleAttr = [[NSMutableAttributedString alloc] initWithAttributedString:string];
+    
     [titleAttr setAttributes:attributes range:NSMakeRange(0, titleAttr.length)];
+    
+    //fix color
+    titleAttr = [self _textWithString:titleAttr withRemarkColor:[UIColor redColor]];
+    
     
     NSRange titleRange = NSMakeRange(0, titleAttr.length);
     NSMutableParagraphStyle *titleParagraphStyle = [NSMutableParagraphStyle new];
@@ -117,7 +119,6 @@
     
     [string appendAttributedString:contentAttributeString];
     
-
     
     NSMutableParagraphStyle *gridParagraphStyle = [NSMutableParagraphStyle new];
     gridParagraphStyle.firstLineHeadIndent = 20.0f;  //首行缩进

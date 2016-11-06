@@ -13,7 +13,6 @@
 
 @interface MFDiagnosticDataParser : NSObject
 
-+ (NSMutableDictionary *)attributesWithDefaultConfig;
 
 + (NSMutableDictionary *)attributesWithConfig:(MFFrameParserConfig *)config;
 

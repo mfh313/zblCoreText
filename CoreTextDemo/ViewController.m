@@ -31,13 +31,13 @@
     [self.view addSubview:_contentScrollView];
     
     NSMutableArray *datas = [[MFCustomerDiagnosticLogic sharedLogic] diagnosticQuestions];
-    MFDiagnosticQuestionDataItem *dataItem = datas[0];
+    MFDiagnosticQuestionDataItem *dataItem = datas[8];
     MFDiagnosticQuestionDataItem *dataItem2 = datas[1];
     MFDiagnosticQuestionDataItem *dataItem3 = datas[2];
     
     ParagraphStyleTextView *testView = [[ParagraphStyleTextView alloc] initWithFrame:CGRectMake(10, 50, CGRectGetWidth(self.view.bounds)-20, 300)];
     testView.backgroundColor = [UIColor lightGrayColor];
-    [_contentScrollView addSubview:testView];
+//    [_contentScrollView addSubview:testView];
     
     CGRect richTextViewFrame = CGRectMake(10,CGRectGetMaxY(testView.frame) + 20, CGRectGetWidth(self.view.bounds)-20, 200);
     MFCoreTextView *richTextView1 = [self coreTextView:richTextViewFrame dataItem:dataItem];
@@ -48,12 +48,12 @@
     CGRect richTextViewFrame2 = CGRectMake(10,CGRectGetMaxY(richTextView1.frame) + 10, CGRectGetWidth(self.view.bounds)-20, 200);
     MFCoreTextView *richTextView2 = [self coreTextView:richTextViewFrame2 dataItem:dataItem2];
     richTextView2.backgroundColor = [UIColor whiteColor];
-    [_contentScrollView addSubview:richTextView2];
+//    [_contentScrollView addSubview:richTextView2];
     
     CGRect richTextViewFrame3 = CGRectMake(10,CGRectGetMaxY(richTextView2.frame) + 10, CGRectGetWidth(self.view.bounds)-20, 200);
     MFCoreTextView *richTextView3 = [self coreTextView:richTextViewFrame3 dataItem:dataItem3];
     richTextView3.backgroundColor = [UIColor whiteColor];
-    [_contentScrollView addSubview:richTextView3];
+//    [_contentScrollView addSubview:richTextView3];
     
 
     [richTextView2 setNeedsDisplay];
@@ -64,7 +64,7 @@
     CGRect tableViewFrame = CGRectMake(0, CGRectGetMaxY(richTextView3.frame) + 20, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds));
     _contentTableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStylePlain];
     _contentTableView.backgroundColor = [UIColor redColor];
-    [_contentScrollView addSubview:_contentTableView];
+//    [_contentScrollView addSubview:_contentTableView];
     
     
     
