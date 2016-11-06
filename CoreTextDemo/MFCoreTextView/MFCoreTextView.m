@@ -116,13 +116,13 @@
             CGRect contentDescriptionRect = CGRectMake(delegateBounds.origin.x + 5, delegateBounds.origin.y, CGRectGetWidth(delegateBounds) - 10, CGRectGetHeight(delegateBounds) - dataItem.contentImageHeight - 10);
         
             //填充颜色
-            CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
+            CGContextSetFillColorWithColor(context, [UIColor clearColor].CGColor);
             CGContextFillRect(context, delegateBounds);
             
-            CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
+            CGContextSetFillColorWithColor(context, [UIColor clearColor].CGColor);
             CGContextFillRect(context, imageRect);
             
-            CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
+            CGContextSetFillColorWithColor(context, [UIColor clearColor].CGColor);
             CGContextFillRect(context, contentDescriptionRect);
             
             CGContextDrawImage(context, imageRect, content.CGImage);
@@ -219,6 +219,16 @@
 //    tipsView.frame = tipsFrame;
 //    [self addSubview:tipsView];
     
+}
+
++(CFIndex)touchContentOffsetInView:(UIView *)view atPoint:(CGPoint)point frame:(CTFrameRef)frame
+{
+    CFArrayRef lines = CTFrameGetLines(frame);
+    if (!lines) {
+        return -1;
+    }
+    
+    return -1;
 }
 
 @end
