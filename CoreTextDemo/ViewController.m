@@ -41,7 +41,7 @@
     
     CGRect richTextViewFrame = CGRectMake(10,CGRectGetMaxY(testView.frame) + 20, CGRectGetWidth(self.view.bounds)-20, 200);
     MFCoreTextView *richTextView1 = [self coreTextView:richTextViewFrame dataItem:dataItem];
-    richTextView1.backgroundColor = [UIColor lightGrayColor];
+    richTextView1.backgroundColor = [UIColor whiteColor];
     [_contentScrollView addSubview:richTextView1];
     [richTextView1 setNeedsDisplay];
     
