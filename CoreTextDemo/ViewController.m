@@ -13,9 +13,11 @@
 #import "MFDiagnosticDataParser.h"
 #import "ParagraphStyleTextView.h"
 
-@interface ViewController ()
+@interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UIScrollView *_contentScrollView;
+    
+    UITableView *_contentTableView;
 }
 
 @end
@@ -39,29 +41,36 @@
     
     CGRect richTextViewFrame = CGRectMake(10,CGRectGetMaxY(testView.frame) + 20, CGRectGetWidth(self.view.bounds)-20, 200);
     MFCoreTextView *richTextView1 = [self coreTextView:richTextViewFrame dataItem:dataItem];
-    richTextView1.backgroundColor = [UIColor whiteColor];
+    richTextView1.backgroundColor = [UIColor lightGrayColor];
     [_contentScrollView addSubview:richTextView1];
     [richTextView1 setNeedsDisplay];
     
     CGRect richTextViewFrame2 = CGRectMake(10,CGRectGetMaxY(richTextView1.frame) + 10, CGRectGetWidth(self.view.bounds)-20, 200);
     MFCoreTextView *richTextView2 = [self coreTextView:richTextViewFrame2 dataItem:dataItem2];
-    richTextView2.backgroundColor = [UIColor whiteColor];
+    richTextView2.backgroundColor = [UIColor lightGrayColor];
     [_contentScrollView addSubview:richTextView2];
     
     CGRect richTextViewFrame3 = CGRectMake(10,CGRectGetMaxY(richTextView2.frame) + 10, CGRectGetWidth(self.view.bounds)-20, 200);
     MFCoreTextView *richTextView3 = [self coreTextView:richTextViewFrame3 dataItem:dataItem3];
-    richTextView3.backgroundColor = [UIColor whiteColor];
+    richTextView3.backgroundColor = [UIColor lightGrayColor];
     [_contentScrollView addSubview:richTextView3];
     
 
     [richTextView2 setNeedsDisplay];
     [richTextView3 setNeedsDisplay];
     
+
+    
+    CGRect tableViewFrame = CGRectMake(0, CGRectGetMaxY(richTextView3.frame) + 20, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds));
+    _contentTableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStylePlain];
+    _contentTableView.backgroundColor = [UIColor redColor];
+    [_contentScrollView addSubview:_contentTableView];
+    
+    
+    
     UIView *lastView = richTextView3;
-    CGFloat maxY = CGRectGetMaxY(lastView.frame);
+    CGFloat maxY = CGRectGetMaxY(_contentTableView.frame);
     _contentScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.bounds), 30 + maxY);
-    
-    
 }
 
 -(MFCoreTextView *)coreTextView:(CGRect)frame

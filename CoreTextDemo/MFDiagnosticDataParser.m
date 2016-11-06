@@ -95,22 +95,36 @@
     
     NSMutableAttributedString *titleAttr = [[NSMutableAttributedString alloc] initWithAttributedString:dataItem.showingTitleDescription];
     [titleAttr setAttributes:attributes range:NSMakeRange(0, titleAttr.length)];
+    
+    NSRange titleRange = NSMakeRange(0, titleAttr.length);
+    NSMutableParagraphStyle *titleParagraphStyle = [NSMutableParagraphStyle new];
+    titleParagraphStyle.firstLineHeadIndent = 30.0f;  //首行缩进
+    titleParagraphStyle.headIndent = 0.0f;          //每行缩进
+    titleParagraphStyle.lineSpacing = 2.0f;    //行距
+    titleParagraphStyle.paragraphSpacing = 20.0f;    //段前间隔,段与段之间的距离
+    titleParagraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
+    [titleAttr addAttribute:NSParagraphStyleAttributeName value:titleParagraphStyle range:titleRange];
     [string appendAttributedString:titleAttr];
+    
+    NSMutableAttributedString *tabAttr = [[NSMutableAttributedString alloc] initWithString:@"\n" attributes:nil];
+    [string appendAttributedString:tabAttr];
+    
     
     NSMutableAttributedString *contentAttributeString = [self parseContent:dataItem
                                                                contentItem:dataItem.diagnosticContentArray
                                                                     config:config];
+    
     [string appendAttributedString:contentAttributeString];
     
-    //设置标题和图片换行距离
-    CGFloat paragraghSpace = 20.0f;
-    const CFIndex kNumberOfSettings = 1;
-    CTParagraphStyleSetting theSettings[kNumberOfSettings] = {
-        {kCTParagraphStyleSpecifierParagraphSpacing, sizeof(CGFloat), &paragraghSpace}
-    };
-    CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
-    NSMutableDictionary *exAttributes = [NSMutableDictionary dictionaryWithObject:(id)theParagraphRef forKey:(id)kCTParagraphStyleAttributeName];
-    [string addAttributes:exAttributes range:NSMakeRange(0, string.length)];
+
+    
+    NSMutableParagraphStyle *gridParagraphStyle = [NSMutableParagraphStyle new];
+    gridParagraphStyle.firstLineHeadIndent = 20.0f;  //首行缩进
+    gridParagraphStyle.headIndent = 20.0f;          //每行缩进
+    gridParagraphStyle.paragraphSpacing = 20.0f;    //段前间隔,段与段之间的距离
+    gridParagraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    [string addAttribute:NSParagraphStyleAttributeName value:gridParagraphStyle
+                                   range:NSMakeRange(titleAttr.length,string.length - titleAttr.length)];
     
     
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)string);
@@ -135,7 +149,7 @@
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
     
     NSAttributedString *nAttr = [[NSAttributedString alloc] initWithString:@"\n" attributes:nil];
-    [string appendAttributedString:nAttr];
+//    [string appendAttributedString:nAttr];
     
     NSInteger columnCount = dataItem.columnCount;
     
@@ -159,38 +173,38 @@
     CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
     [string addAttribute:(id)kCTKernAttributeName value:(__bridge id)num range:NSMakeRange(0, string.length)];
     
-    //首行缩进           图片偏移
-    CGFloat firstLineIndentSize = 20.0f;      //TODO:图片最左边偏移，后面存json
-    CTParagraphStyleSetting firstLineIndent;
-    firstLineIndent.spec = kCTParagraphStyleSpecifierFirstLineHeadIndent;
-    firstLineIndent.valueSize = sizeof(CGFloat);
-    firstLineIndent.value = &firstLineIndentSize;
-    
-    //段前缩进
-    CGFloat headIndentSize = 20.0f;
-    CTParagraphStyleSetting headIndent;
-    headIndent.spec = kCTParagraphStyleSpecifierHeadIndent;
-    headIndent.valueSize = sizeof(CGFloat);
-    headIndent.value = &headIndentSize;
-    
-    //段前间隔,段与段之间的距离
-    CGFloat paragraghSpace = 20.0f;           //TODO:图片上下间距，后面存json
-    CTParagraphStyleSetting paragraghInterval;
-    paragraghInterval.spec = kCTParagraphStyleSpecifierParagraphSpacing;
-    paragraghInterval.valueSize = sizeof(CGFloat);
-    paragraghInterval.value = &paragraghSpace;
-    
-    const CFIndex kNumberOfSettings = 3;
-    CTParagraphStyleSetting theSettings[] = {
-        firstLineIndent,
-        headIndent,
-        paragraghInterval
-    };
-    
-    CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
-    NSMutableDictionary *exAttributes = [NSMutableDictionary dictionaryWithObject:(id)theParagraphRef forKey:(id)kCTParagraphStyleAttributeName];
-    
-    [string addAttributes:exAttributes range:NSMakeRange(0, string.length)];
+//    //首行缩进           图片偏移
+//    CGFloat firstLineIndentSize = 20.0f;      //TODO:图片最左边偏移，后面存json
+//    CTParagraphStyleSetting firstLineIndent;
+//    firstLineIndent.spec = kCTParagraphStyleSpecifierFirstLineHeadIndent;
+//    firstLineIndent.valueSize = sizeof(CGFloat);
+//    firstLineIndent.value = &firstLineIndentSize;
+//    
+//    //段前缩进
+//    CGFloat headIndentSize = 20.0f;
+//    CTParagraphStyleSetting headIndent;
+//    headIndent.spec = kCTParagraphStyleSpecifierHeadIndent;
+//    headIndent.valueSize = sizeof(CGFloat);
+//    headIndent.value = &headIndentSize;
+//    
+//    //段前间隔,段与段之间的距离
+//    CGFloat paragraghSpace = 20.0f;           //TODO:图片上下间距，后面存json
+//    CTParagraphStyleSetting paragraghInterval;
+//    paragraghInterval.spec = kCTParagraphStyleSpecifierParagraphSpacing;
+//    paragraghInterval.valueSize = sizeof(CGFloat);
+//    paragraghInterval.value = &paragraghSpace;
+//    
+//    const CFIndex kNumberOfSettings = 3;
+//    CTParagraphStyleSetting theSettings[] = {
+//        firstLineIndent,
+//        headIndent,
+//        paragraghInterval
+//    };
+//    
+//    CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
+//    NSMutableDictionary *exAttributes = [NSMutableDictionary dictionaryWithObject:(id)theParagraphRef forKey:(id)kCTParagraphStyleAttributeName];
+//    
+//    [string addAttributes:exAttributes range:NSMakeRange(0, string.length)];
     
     return string;
 }

@@ -21,49 +21,36 @@
     
     NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:@"测试段落样式测试段落样式测试段落样式测试段落样式测试段落样式测试123\n456测试段落样式测试段落样78\n910式测试段落样式测试段落样式"];
     
+    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+    paragraphStyle.firstLineHeadIndent = 40.0f;       //首行缩进
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;     //换行模式
+    paragraphStyle.headIndent = 60.0f;     //每行缩进
+    paragraphStyle.lineSpacing = 30.0f;    //行距
     
-    //首行缩进
-    CGFloat firstLineIndentSize = 20.0f;
-    CTParagraphStyleSetting firstLineIndent;
-    firstLineIndent.spec = kCTParagraphStyleSpecifierFirstLineHeadIndent;
-    firstLineIndent.valueSize = sizeof(CGFloat);
-    firstLineIndent.value = &firstLineIndentSize;
-    
-    //段前缩进
-    CGFloat headIndentSize = 30.0f;
-    CTParagraphStyleSetting headIndent;
-    headIndent.spec = kCTParagraphStyleSpecifierHeadIndent;
-    headIndent.valueSize = sizeof(CGFloat);
-    headIndent.value = &headIndentSize;
-    
-    //段前间隔
-    CGFloat beforeSpace = 50.0f;
-    CTParagraphStyleSetting spacingBefore;
-    spacingBefore.spec = kCTParagraphStyleSpecifierParagraphSpacingBefore;
-    spacingBefore.valueSize = sizeof(CGFloat);
-    spacingBefore.value = &beforeSpace;
-    
-    //段前间隔
-    CGFloat paragraghSpace = 30.0f;
-    CTParagraphStyleSetting paragraghInterval;
-    paragraghInterval.spec = kCTParagraphStyleSpecifierParagraphSpacing;
-    paragraghInterval.valueSize = sizeof(CGFloat);
-    paragraghInterval.value = &paragraghSpace;
+    [attString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attString.length)];
     
     
-    const CFIndex kNumberOfSettings = 4;
-    CTParagraphStyleSetting theSettings[] = {
-        firstLineIndent,headIndent,paragraghInterval,spacingBefore
-    };
+//    //首行缩进
+//    CGFloat firstLineIndentSize = 40.0f;
+//    CTParagraphStyleSetting firstLineIndent;
+//    firstLineIndent.spec = kCTParagraphStyleSpecifierFirstLineHeadIndent;
+//    firstLineIndent.valueSize = sizeof(CGFloat);
+//    firstLineIndent.value = &firstLineIndentSize;
+//    
+//    
+//    const CFIndex kNumberOfSettings = 1;
+//    CTParagraphStyleSetting theSettings[] = {
+//        firstLineIndent
+//    };
+//    
+//    CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
+//    NSMutableDictionary *exAttributes = [NSMutableDictionary dictionaryWithObject:(id)theParagraphRef forKey:(id)kCTParagraphStyleAttributeName];
+//    
+//    [attString addAttributes:exAttributes range:NSMakeRange(0, attString.length)];
     
-    CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
-    NSMutableDictionary *exAttributes = [NSMutableDictionary dictionaryWithObject:(id)theParagraphRef forKey:(id)kCTParagraphStyleAttributeName];
-    
-    [attString addAttributes:exAttributes range:NSMakeRange(0, attString.length)];
-    
-    long number = 40;
-    CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
-    [attString addAttribute:(id)kCTKernAttributeName value:(__bridge id)num range:NSMakeRange(0, attString.length)];
+//    long number = 40;
+//    CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
+//    [attString addAttribute:(id)kCTKernAttributeName value:(__bridge id)num range:NSMakeRange(0, attString.length)];
     
     
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attString);
