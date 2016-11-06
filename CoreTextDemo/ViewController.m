@@ -47,12 +47,12 @@
     
     CGRect richTextViewFrame2 = CGRectMake(10,CGRectGetMaxY(richTextView1.frame) + 10, CGRectGetWidth(self.view.bounds)-20, 200);
     MFCoreTextView *richTextView2 = [self coreTextView:richTextViewFrame2 dataItem:dataItem2];
-    richTextView2.backgroundColor = [UIColor lightGrayColor];
+    richTextView2.backgroundColor = [UIColor whiteColor];
     [_contentScrollView addSubview:richTextView2];
     
     CGRect richTextViewFrame3 = CGRectMake(10,CGRectGetMaxY(richTextView2.frame) + 10, CGRectGetWidth(self.view.bounds)-20, 200);
     MFCoreTextView *richTextView3 = [self coreTextView:richTextViewFrame3 dataItem:dataItem3];
-    richTextView3.backgroundColor = [UIColor lightGrayColor];
+    richTextView3.backgroundColor = [UIColor whiteColor];
     [_contentScrollView addSubview:richTextView3];
     
 

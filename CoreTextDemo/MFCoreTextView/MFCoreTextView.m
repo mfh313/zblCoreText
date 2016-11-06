@@ -116,13 +116,13 @@
             CGRect contentDescriptionRect = CGRectMake(delegateBounds.origin.x + 5, delegateBounds.origin.y, CGRectGetWidth(delegateBounds) - 10, CGRectGetHeight(delegateBounds) - dataItem.contentImageHeight - 10);
         
             //填充颜色
-            CGContextSetFillColorWithColor(context, [UIColor yellowColor].CGColor);
+            CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
             CGContextFillRect(context, delegateBounds);
             
-            CGContextSetFillColorWithColor(context, [UIColor purpleColor].CGColor);
+            CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
             CGContextFillRect(context, imageRect);
             
-            CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);
+            CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
             CGContextFillRect(context, contentDescriptionRect);
             
             CGContextDrawImage(context, imageRect, content.CGImage);
@@ -132,7 +132,6 @@
 
 -(void)drawContentDescription:(CGContextRef)context
 {
-    
     CTFrameRef frame = self.data.ctFrame;
     NSArray *lines = (NSArray *)CTFrameGetLines(frame);
     NSUInteger lineCount = lines.count;
