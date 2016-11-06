@@ -86,6 +86,7 @@
     return [self attributesWithConfig:defaultConfig];
 }
 
+//TODO:整体排版包括间隔需要后期优化，先不管
 + (MFDiagnosticCoreTextData *)parseContent:(MFDiagnosticQuestionDataItem *)dataItem
                                     config:(MFFrameParserConfig*)config
 {
@@ -149,7 +150,6 @@
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
     
     NSAttributedString *nAttr = [[NSAttributedString alloc] initWithString:@"\n" attributes:nil];
-//    [string appendAttributedString:nAttr];
     
     NSInteger columnCount = dataItem.columnCount;
     
@@ -169,42 +169,10 @@
         }
     }
     
-    long number = 20;                          //TODO:图片左右间隔，后面存json
+    //TODO:图片左右间隔，后面存json
+    long number = 20;
     CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&number);
     [string addAttribute:(id)kCTKernAttributeName value:(__bridge id)num range:NSMakeRange(0, string.length)];
-    
-//    //首行缩进           图片偏移
-//    CGFloat firstLineIndentSize = 20.0f;      //TODO:图片最左边偏移，后面存json
-//    CTParagraphStyleSetting firstLineIndent;
-//    firstLineIndent.spec = kCTParagraphStyleSpecifierFirstLineHeadIndent;
-//    firstLineIndent.valueSize = sizeof(CGFloat);
-//    firstLineIndent.value = &firstLineIndentSize;
-//    
-//    //段前缩进
-//    CGFloat headIndentSize = 20.0f;
-//    CTParagraphStyleSetting headIndent;
-//    headIndent.spec = kCTParagraphStyleSpecifierHeadIndent;
-//    headIndent.valueSize = sizeof(CGFloat);
-//    headIndent.value = &headIndentSize;
-//    
-//    //段前间隔,段与段之间的距离
-//    CGFloat paragraghSpace = 20.0f;           //TODO:图片上下间距，后面存json
-//    CTParagraphStyleSetting paragraghInterval;
-//    paragraghInterval.spec = kCTParagraphStyleSpecifierParagraphSpacing;
-//    paragraghInterval.valueSize = sizeof(CGFloat);
-//    paragraghInterval.value = &paragraghSpace;
-//    
-//    const CFIndex kNumberOfSettings = 3;
-//    CTParagraphStyleSetting theSettings[] = {
-//        firstLineIndent,
-//        headIndent,
-//        paragraghInterval
-//    };
-//    
-//    CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, kNumberOfSettings);
-//    NSMutableDictionary *exAttributes = [NSMutableDictionary dictionaryWithObject:(id)theParagraphRef forKey:(id)kCTParagraphStyleAttributeName];
-//    
-//    [string addAttributes:exAttributes range:NSMakeRange(0, string.length)];
     
     return string;
 }
