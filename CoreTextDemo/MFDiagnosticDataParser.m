@@ -169,8 +169,7 @@
     
     attr = [self _textWithString:attr withRemarkColor:[UIColor hx_colorWithHexString:@"e93871"]];
 
-    alignment = kCTCenterTextAlignment;
-    
+
     CTParagraphStyleSetting alignmentStyle;
     alignmentStyle.spec = kCTParagraphStyleSpecifierAlignment;
     alignmentStyle.valueSize = sizeof(alignment);
