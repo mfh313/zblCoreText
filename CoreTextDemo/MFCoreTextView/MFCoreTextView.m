@@ -24,13 +24,15 @@
         for (int i = 0; i < 1; i++) {
             
             UIImage *coverImage = [UIImage imageNamed:@"zbl35"];
-            UIImageView *converView = [[UIImageView alloc] initWithImage:coverImage];
-            converView.frame = CGRectMake(0, 0, coverImage.size.width, coverImage.size.height);
+            CGRect converFrame = CGRectMake(0, 0, coverImage.size.width, coverImage.size.height);
+            UIImageView *converView = [[UIImageView alloc] initWithFrame:converFrame];
+            converView.image = [coverImage stretchableImageWithLeftCapWidth:coverImage.size.width/2 topCapHeight:coverImage.size.height/2];
             [_itemViews addObject:converView];
             
             UIImage *tipImage = [UIImage imageNamed:@"zbl23"];
             UIImageView *tipImageView = [[UIImageView alloc] initWithImage:tipImage];
-            converView.frame = CGRectMake(CGRectGetWidth(converView.frame) - 30 - tipImage.size.width, CGRectGetHeight(converView.frame) - 30 - tipImage.size.height, tipImage.size.width, tipImage.size.height);
+            CGRect tipsFrame = CGRectMake(CGRectGetWidth(converView.frame) - 10 - tipImage.size.width, CGRectGetHeight(converView.frame) - 10 - tipImage.size.height, tipImage.size.width, tipImage.size.height);
+            tipImageView.frame = tipsFrame;
             tipImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
             [converView addSubview:tipImageView];
             
@@ -211,19 +213,91 @@
 {
     CGPoint point = [recognizer locationInView:self];
     
-//    UIView *tipsView = _itemViews[0];
-//    CGRect tipsFrame = tipsView.frame;
-//    tipsFrame.origin = point;
-//    tipsFrame.size = CGSizeMake(85, 85);
-//    
-//    tipsView.frame = tipsFrame;
-//    [self addSubview:tipsView];
     CFIndex touchIndex = [[self class] touchContentOffsetInView:self atPoint:point frame:self.data.ctFrame];
+
+    CGRect touchFrame = [[self class] touchInViewIndex:touchIndex frame:self.data.ctFrame];
     
-    NSLog(@"touchIndex=%ld",touchIndex);
-    
+    //翻转坐标系
+    CGAffineTransform transform = CGAffineTransformMakeTranslation(0, self.bounds.size.height);
+    transform = CGAffineTransformScale(transform, 1.0f, -1.0f);
+    CGRect filpRect = CGRectApplyAffineTransform(touchFrame, transform);
+    UIView *tipsView = _itemViews[0];
+    tipsView.frame = filpRect;
+    [self addSubview:tipsView];
 }
 
++(CGRect)touchInViewIndex:(CFIndex)touchIndex frame:(CTFrameRef)frame
+{
+    NSLog(@"touchIndex=%ld",touchIndex);
+    
+    CFArrayRef lines = CTFrameGetLines(frame);
+    if (!lines) {
+        return CGRectZero;
+    }
+    
+    CFIndex count = CFArrayGetCount(lines);
+    
+    CGPoint origins[count];
+    CTFrameGetLineOrigins(frame, CFRangeMake(0, 0), origins);
+    
+    for (int i = 0; i < count; i++) {
+        
+        CTLineRef line = CFArrayGetValueAtIndex(lines, i);
+        NSArray *runs = (NSArray *)CTLineGetGlyphRuns(line);
+        
+        for (int j = 0; j < runs.count; j++) {
+            CTRunRef run = (__bridge CTRunRef)runs[j];
+            
+            CFRange range = CTRunGetStringRange(run);
+            
+            //找到点中的富文本
+            if (range.location <= touchIndex
+                && range.location + range.length >= touchIndex)
+            {
+                NSDictionary *runAttributes = (NSDictionary *)CTRunGetAttributes(run);
+                CTRunDelegateRef delegate = (__bridge CTRunDelegateRef)[runAttributes valueForKey:(id)kCTRunDelegateAttributeName];
+                if (delegate == nil) {
+                    continue;
+                }
+                
+                if (![runAttributes[MFTextAttachmentAttributeName] isKindOfClass:[MFTextAttachment class]]) {
+                    continue;
+                }
+                
+                MFTextAttachment *attach = (MFTextAttachment *)runAttributes[MFTextAttachmentAttributeName];
+                MFDiagnosticQuestionDataItem *dataItem = (MFDiagnosticQuestionDataItem *)attach.layoutData;
+                
+                MFDiagnosticQuestionContentDataItem *contentItem = (MFDiagnosticQuestionContentDataItem *)attach.attachData;
+                
+                NSLog(@"contentItem=%@",contentItem);
+                contentItem.isSelected = !contentItem.isSelected;
+                
+                CGRect runBounds;
+                CGFloat ascent;
+                CGFloat descent;
+                CGFloat leading;
+                runBounds.size.width = CTRunGetTypographicBounds(run, CFRangeMake(0, 0), &ascent, &descent, &leading);
+                runBounds.size.height = ascent + descent;
+                
+                CGFloat xOffset = CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, NULL);
+                runBounds.origin.x = origins[i].x + xOffset;
+                runBounds.origin.y = origins[i].y;
+                runBounds.origin.y -= descent;
+                
+                CGPathRef pathRef = CTFrameGetPath(frame);
+                CGRect colRect = CGPathGetBoundingBox(pathRef);
+                
+                CGRect delegateBounds = CGRectOffset(runBounds, colRect.origin.x, colRect.origin.y);
+                
+                return delegateBounds;
+            }
+            
+        }
+    }
+    
+    return CGRectZero;
+    
+}
 
 +(CFIndex)touchContentOffsetInView:(UIView *)view atPoint:(CGPoint)point frame:(CTFrameRef)frame
 {
