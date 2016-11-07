@@ -36,7 +36,7 @@
             CGRect tipsFrame = CGRectMake(CGRectGetWidth(converView.frame) - 10 - tipImage.size.width, CGRectGetHeight(converView.frame) - 10 - tipImage.size.height, tipImage.size.width, tipImage.size.height);
             tipImageView.frame = tipsFrame;
             tipImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
-            [converView addSubview:tipImageView];
+//            [converView addSubview:tipImageView];
             
             [self addSubview:converView];
             
