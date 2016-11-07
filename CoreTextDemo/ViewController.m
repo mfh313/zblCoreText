@@ -31,7 +31,7 @@
     [self.view addSubview:_contentScrollView];
     
     NSMutableArray *datas = [[MFCustomerDiagnosticLogic sharedLogic] diagnosticQuestions];
-    MFDiagnosticQuestionDataItem *dataItem = datas[17];
+    MFDiagnosticQuestionDataItem *dataItem = datas[6];
     MFDiagnosticQuestionDataItem *dataItem2 = datas[11];
     MFDiagnosticQuestionDataItem *dataItem3 = datas[18];
     
