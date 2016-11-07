@@ -160,6 +160,7 @@
 + (MFDiagnosticCoreTextData *)parseContentDescription:(MFDiagnosticQuestionContentDataItem *)dataItem
                                                config:(MFFrameParserConfig*)config
                                              fillRect:(CGRect)fillRect
+                                            alignment:(CTTextAlignment)alignment
 {
     config.width = fillRect.size.width;
     
@@ -168,7 +169,8 @@
     
     attr = [self _textWithString:attr withRemarkColor:[UIColor hx_colorWithHexString:@"e93871"]];
 
-    CTTextAlignment alignment = kCTCenterTextAlignment;
+    alignment = kCTCenterTextAlignment;
+    
     CTParagraphStyleSetting alignmentStyle;
     alignmentStyle.spec = kCTParagraphStyleSpecifierAlignment;
     alignmentStyle.valueSize = sizeof(alignment);

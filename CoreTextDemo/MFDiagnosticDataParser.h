@@ -21,6 +21,7 @@
 
 + (MFDiagnosticCoreTextData *)parseContentDescription:(MFDiagnosticQuestionContentDataItem *)dataItem
                                                config:(MFFrameParserConfig*)config
-                                             fillRect:(CGRect)fillRect;
+                                             fillRect:(CGRect)fillRect
+                                            alignment:(CTTextAlignment)alignment;
 
 @end

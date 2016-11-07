@@ -191,6 +191,11 @@
             CGRect contentDescriptionRect = CGRectMake(delegateBounds.origin.x + 5, delegateBounds.origin.y, CGRectGetWidth(delegateBounds) - 10, CGRectGetHeight(delegateBounds) - dataItem.contentImageHeight - 10);
         
             
+            CTTextAlignment alignment = kCTTextAlignmentCenter;
+            if ([dataItem.itemType isEqualToString:MFDiagnosticTypeKeyString]) {
+                alignment = kCTTextAlignmentLeft;
+            }
+            
             MFFrameParserConfig *config = [[MFFrameParserConfig alloc] init];
             config.fontSize = 16.0;
             config.lineSpace = 0;
@@ -198,7 +203,8 @@
             MFDiagnosticCoreTextData *data = [MFDiagnosticDataParser
                                               parseContentDescription:contentItem
                                               config:config
-                                              fillRect:contentDescriptionRect];
+                                              fillRect:contentDescriptionRect
+                                              alignment:alignment];
             CTFrameDraw(data.ctFrame, context);
             
         }
