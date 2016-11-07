@@ -383,9 +383,7 @@
         if (contentItem.isSelected)
         {
             [tipsView setHidden:NO];
-            [UIView animateWithDuration:0.25 animations:^{
-                tipsView.frame = touchRect;
-            }];
+            tipsView.frame = touchRect;
         }
         else
         {
