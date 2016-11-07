@@ -71,6 +71,7 @@
     MFDiagnosticCoreTextData *coreTextData = [MFDiagnosticCoreTextData new];
     coreTextData.ctFrame = frame;
     coreTextData.height = height;
+    coreTextData.content = string;
     
     CFRelease(framesetter);
     
