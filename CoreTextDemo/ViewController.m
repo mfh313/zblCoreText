@@ -32,14 +32,19 @@
     
     NSMutableArray *datas = [[MFCustomerDiagnosticLogic sharedLogic] diagnosticQuestions];
     MFDiagnosticQuestionDataItem *dataItem = datas[18];
-    MFDiagnosticQuestionDataItem *dataItem2 = datas[1];
+    MFDiagnosticQuestionDataItem *dataItem2 = datas[8];
     MFDiagnosticQuestionDataItem *dataItem3 = datas[2];
     
-    ParagraphStyleTextView *testView = [[ParagraphStyleTextView alloc] initWithFrame:CGRectMake(10, 50, CGRectGetWidth(self.view.bounds)-20, 300)];
+    
+    CGRect firstViewFrame = CGRectMake(10, 50, CGRectGetWidth(self.view.bounds)-20, 300);
+    ParagraphStyleTextView *testView = [[ParagraphStyleTextView alloc] initWithFrame:firstViewFrame];
     testView.backgroundColor = [UIColor lightGrayColor];
 //    [_contentScrollView addSubview:testView];
     
     CGRect richTextViewFrame = CGRectMake(10,CGRectGetMaxY(testView.frame) + 20, CGRectGetWidth(self.view.bounds)-20, 200);
+    
+    richTextViewFrame = firstViewFrame;
+    
     MFCoreTextView *richTextView1 = [self coreTextView:richTextViewFrame dataItem:dataItem];
     richTextView1.backgroundColor = [UIColor whiteColor];
     [_contentScrollView addSubview:richTextView1];
@@ -48,18 +53,15 @@
     CGRect richTextViewFrame2 = CGRectMake(10,CGRectGetMaxY(richTextView1.frame) + 10, CGRectGetWidth(self.view.bounds)-20, 200);
     MFCoreTextView *richTextView2 = [self coreTextView:richTextViewFrame2 dataItem:dataItem2];
     richTextView2.backgroundColor = [UIColor whiteColor];
-//    [_contentScrollView addSubview:richTextView2];
+    [_contentScrollView addSubview:richTextView2];
     
     CGRect richTextViewFrame3 = CGRectMake(10,CGRectGetMaxY(richTextView2.frame) + 10, CGRectGetWidth(self.view.bounds)-20, 200);
     MFCoreTextView *richTextView3 = [self coreTextView:richTextViewFrame3 dataItem:dataItem3];
     richTextView3.backgroundColor = [UIColor whiteColor];
-//    [_contentScrollView addSubview:richTextView3];
+    [_contentScrollView addSubview:richTextView3];
     
-
     [richTextView2 setNeedsDisplay];
     [richTextView3 setNeedsDisplay];
-    
-
     
     CGRect tableViewFrame = CGRectMake(0, CGRectGetMaxY(richTextView3.frame) + 20, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds));
     _contentTableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStylePlain];
@@ -67,9 +69,8 @@
 //    [_contentScrollView addSubview:_contentTableView];
     
     
-    
     UIView *lastView = richTextView3;
-    CGFloat maxY = CGRectGetMaxY(_contentTableView.frame);
+    CGFloat maxY = CGRectGetMaxY(lastView.frame);
     _contentScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.bounds), 30 + maxY);
 }
 
