@@ -31,9 +31,9 @@
     [self.view addSubview:_contentScrollView];
     
     NSMutableArray *datas = [[MFCustomerDiagnosticLogic sharedLogic] diagnosticQuestions];
-    MFDiagnosticQuestionDataItem *dataItem = datas[18];
-    MFDiagnosticQuestionDataItem *dataItem2 = datas[8];
-    MFDiagnosticQuestionDataItem *dataItem3 = datas[2];
+    MFDiagnosticQuestionDataItem *dataItem = datas[0];
+    MFDiagnosticQuestionDataItem *dataItem2 = datas[1];
+    MFDiagnosticQuestionDataItem *dataItem3 = datas[8];
     
     
     CGRect firstViewFrame = CGRectMake(10, 50, CGRectGetWidth(self.view.bounds)-20, 300);

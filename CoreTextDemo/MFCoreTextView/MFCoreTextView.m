@@ -40,7 +40,7 @@
             
             [self addSubview:converView];
             
-            converView.frame = CGRectZero;
+            converView.frame = self.bounds;
             [converView setHidden:YES];
         }
     }
@@ -227,8 +227,6 @@
 
 -(void)touchInViewIndex:(CFIndex)touchIndex frame:(CTFrameRef)frame
 {
-    NSLog(@"touchIndex=%ld",touchIndex);
-    
     CFArrayRef lines = CTFrameGetLines(frame);
     if (!lines) {
         return;
@@ -384,7 +382,6 @@
         UIView *tipsView = _itemViews[0];
         if (contentItem.isSelected)
         {
-            [selectedArray addObject:contentItem];
             [tipsView setHidden:NO];
             [UIView animateWithDuration:0.25 animations:^{
                 tipsView.frame = touchRect;
@@ -431,7 +428,6 @@
         UIView *tipsView = _itemViews[0];
         if (contentItem.isSelected)
         {
-            [selectedArray addObject:contentItem];
             [tipsView setHidden:NO];
             [UIView animateWithDuration:0.25 animations:^{
                 tipsView.frame = touchRect;
