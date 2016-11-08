@@ -28,13 +28,17 @@
     //fix color
     titleAttr = [self _textWithString:titleAttr withRemarkColor:[UIColor hx_colorWithHexString:@"e93871"]];
     
+    CGFloat paragraphSpacing = 20.0f;
+    if ([dataItem.itemType isEqualToString:MFDiagnosticTypeKeyString]) {
+        paragraphSpacing = 0.0f;
+    }
     
     NSRange titleRange = NSMakeRange(0, titleAttr.length);
     NSMutableParagraphStyle *titleParagraphStyle = [NSMutableParagraphStyle new];
     titleParagraphStyle.firstLineHeadIndent = 15.0f;  //首行缩进
     titleParagraphStyle.headIndent = 0.0f;          //每行缩进
     titleParagraphStyle.lineSpacing = 2.0f;    //行距
-    titleParagraphStyle.paragraphSpacing = 20.0f;    //段前间隔,段与段之间的距离
+    titleParagraphStyle.paragraphSpacing = paragraphSpacing;    //段前间隔,段与段之间的距离
     titleParagraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
     [titleAttr addAttribute:NSParagraphStyleAttributeName value:titleParagraphStyle range:titleRange];
     [string appendAttributedString:titleAttr];
@@ -53,7 +57,7 @@
     NSMutableParagraphStyle *gridParagraphStyle = [NSMutableParagraphStyle new];
     gridParagraphStyle.firstLineHeadIndent = 20.0f;  //首行缩进
     gridParagraphStyle.headIndent = 20.0f;          //每行缩进
-    gridParagraphStyle.paragraphSpacing = 20.0f;    //段前间隔,段与段之间的距离
+    gridParagraphStyle.paragraphSpacing = paragraphSpacing;    //段前间隔,段与段之间的距离
     gridParagraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     [string addAttribute:NSParagraphStyleAttributeName value:gridParagraphStyle
                                    range:NSMakeRange(titleAttr.length,string.length - titleAttr.length)];
@@ -186,8 +190,11 @@
     CGSize coreTextSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), nil, restrictSize, nil);
     CGFloat titleHeight = coreTextSize.height;
     
+    CGRect textFrame = fillRect;
+    textFrame.origin.y = textFrame.origin.y + (titleHeight - CGRectGetHeight(fillRect))/2;
+    
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathAddRect(path, NULL, fillRect);
+    CGPathAddRect(path, NULL, textFrame);
     
     CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
 

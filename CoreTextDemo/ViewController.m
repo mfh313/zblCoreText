@@ -142,7 +142,6 @@
         cell = [[MMTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         
         MFCoreTextView *cellView = [[MFCoreTextView alloc] initWithFrame:CGRectZero];
-        cellView.backgroundColor = [UIColor whiteColor];
         cell.m_subContentView = cellView;
     }
     

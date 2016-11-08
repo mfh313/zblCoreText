@@ -21,6 +21,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         
+        self.backgroundColor = [UIColor whiteColor];
+        
         _itemViews = [NSMutableArray array];
         
         for (int i = 0; i < 1; i++) {
@@ -123,16 +125,24 @@
             CGRect imageRect = CGRectMake(delegateBounds.origin.x + (CGRectGetWidth(delegateBounds)-dataItem.contentImageWidth)/2, delegateBounds.origin.y + CGRectGetHeight(delegateBounds) - dataItem.contentImageHeight, dataItem.contentImageWidth, dataItem.contentImageHeight);
             CGRect contentDescriptionRect = CGRectMake(delegateBounds.origin.x + 5, delegateBounds.origin.y, CGRectGetWidth(delegateBounds) - 10, CGRectGetHeight(delegateBounds) - dataItem.contentImageHeight - 10);
         
+            UIColor *delegateBoundsColor = [UIColor clearColor];
+            UIColor *imageRectColor = [UIColor clearColor];
+            UIColor *contentDescriptionRectColor = [UIColor clearColor];
+            if ([dataItem.itemType isEqualToString:MFDiagnosticTypeKeyString]) {
+                delegateBoundsColor = [UIColor clearColor];
+                imageRectColor = [UIColor clearColor];
+                contentDescriptionRectColor = [UIColor clearColor];
+            }
             //填充颜色
-            CGContextSetFillColorWithColor(context, [UIColor clearColor].CGColor);
+            CGContextSetFillColorWithColor(context, delegateBoundsColor.CGColor);
             CGContextFillRect(context, delegateBounds);
             
-            CGContextSetFillColorWithColor(context, [UIColor clearColor].CGColor);
+            CGContextSetFillColorWithColor(context, imageRectColor.CGColor);
             CGContextFillRect(context, imageRect);
             
-            CGContextSetFillColorWithColor(context, [UIColor clearColor].CGColor);
+            CGContextSetFillColorWithColor(context, contentDescriptionRectColor.CGColor);
             CGContextFillRect(context, contentDescriptionRect);
-            
+
             CGContextDrawImage(context, imageRect, content.CGImage);
         }
     }
@@ -199,7 +209,7 @@
             MFFrameParserConfig *config = [[MFFrameParserConfig alloc] init];
             config.fontSize = 16.0;
             config.lineSpace = 0;
-            config.textColor = [UIColor hx_colorWithHexString:@"373737"];
+            config.textColor = [UIColor hx_colorWithHexString:@"888888"];
             MFDiagnosticCoreTextData *data = [MFDiagnosticDataParser
                                               parseContentDescription:contentItem
                                               config:config

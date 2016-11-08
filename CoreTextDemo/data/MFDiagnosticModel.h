@@ -14,7 +14,7 @@
 #define MFDiagnosticTitleFont [UIFont systemFontOfSize:18.0]
 #define MFDiagnosticRemarkFont [UIFont systemFontOfSize:20.0]
 #define MFDiagnosticFont [UIFont systemFontOfSize:16.0]
-#define MFDiagnosticStrItemHeight 50
+#define MFDiagnosticStrItemHeight 44
 
 #define DiagnostisImageBundlePath [[NSBundle mainBundle] pathForResource:@"diagnostisImage" ofType:@"bundle"]
 
