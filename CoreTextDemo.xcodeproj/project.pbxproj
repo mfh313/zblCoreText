@@ -133,9 +133,9 @@
 			children = (
 				AC8A7F141DC837F000328CC3 /* AppDelegate.h */,
 				AC8A7F151DC837F000328CC3 /* AppDelegate.m */,
+				AC8A7F3A1DC88F6300328CC3 /* data */,
 				AC803DBF1DCC6A890088FBE0 /* ParagraphStyleTextView.h */,
 				AC803DC01DCC6A890088FBE0 /* ParagraphStyleTextView.m */,
-				AC8A7F3A1DC88F6300328CC3 /* data */,
 				AC8A7F171DC837F000328CC3 /* ViewController.h */,
 				AC8A7F181DC837F000328CC3 /* ViewController.m */,
 				AC800C401DD1A6D900FBBFE1 /* MMTableViewCell.h */,
