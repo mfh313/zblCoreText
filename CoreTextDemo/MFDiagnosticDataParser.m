@@ -12,9 +12,6 @@
 #import "MFTextRunDelegate.h"
 #import "MFDiagnosticModel.h"
 
-#import "MFDiagnosticCoreContentTextData.h"
-#import "MFDiagnosticCoreContentImageData.h"
-
 @implementation MFDiagnosticDataParser
 
 //TODO:整体排版包括间隔需要后期优化，先不管
