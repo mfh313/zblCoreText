@@ -30,7 +30,7 @@
     
     CGFloat paragraphSpacing = 20.0f;
     if ([dataItem.itemType isEqualToString:MFDiagnosticTypeKeyString]) {
-        paragraphSpacing = 0.0f;
+        paragraphSpacing = 2.0f;
     }
     
     NSRange titleRange = NSMakeRange(0, titleAttr.length);
