@@ -37,7 +37,7 @@
     MFDiagnosticQuestionDataItem *dataItem3 = _diagnosticQuestions[18];
     
     
-    CGRect firstViewFrame = CGRectMake(10, 50, CGRectGetWidth(self.view.bounds)-20, 300);
+    CGRect firstViewFrame = CGRectMake(10, 50, CGRectGetWidth(self.view.bounds)-20, 200);
     ParagraphStyleTextView *testView = [[ParagraphStyleTextView alloc] initWithFrame:firstViewFrame];
     testView.backgroundColor = [UIColor lightGrayColor];
     [_contentScrollView addSubview:testView];
