@@ -199,7 +199,7 @@
             MFFrameParserConfig *config = [[MFFrameParserConfig alloc] init];
             config.fontSize = 16.0;
             config.lineSpace = 0;
-            config.textColor = [UIColor hx_colorWithHexString:@"888888"];
+            config.textColor = [UIColor hx_colorWithHexString:@"373737"];
             MFDiagnosticCoreTextData *data = [MFDiagnosticDataParser
                                               parseContentDescription:contentItem
                                               config:config
