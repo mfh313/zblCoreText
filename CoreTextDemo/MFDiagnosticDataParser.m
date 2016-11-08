@@ -69,9 +69,10 @@
     CGFloat height = coreTextSize.height;
     CTFrameRef frame = [self createFrameWithFramesetter:framesetter config:config height:height];
     
+    CGFloat footHeight = 15.0f;
     MFDiagnosticCoreTextData *coreTextData = [MFDiagnosticCoreTextData new];
     coreTextData.ctFrame = frame;
-    coreTextData.height = height;
+    coreTextData.height = height + footHeight;
     coreTextData.content = string;
     
     CFRelease(framesetter);
