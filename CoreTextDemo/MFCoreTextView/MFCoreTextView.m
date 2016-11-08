@@ -199,7 +199,7 @@
             MFFrameParserConfig *config = [[MFFrameParserConfig alloc] init];
             config.fontSize = 16.0;
             config.lineSpace = 0;
-            config.textColor = [UIColor blackColor];
+            config.textColor = [UIColor hx_colorWithHexString:@"888888"];
             MFDiagnosticCoreTextData *data = [MFDiagnosticDataParser
                                               parseContentDescription:contentItem
                                               config:config
@@ -308,6 +308,9 @@
            contentItem:(MFDiagnosticQuestionContentDataItem *)contentItem
              touchRect:(CGRect)touchRect
 {
+    
+    return;
+    
     BOOL canSelect = [self canSelect:dataItem contentItem:contentItem];
     
     if (!canSelect) {

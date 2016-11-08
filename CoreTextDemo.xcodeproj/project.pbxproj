@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AC74BC1B1DCF0E2D005F512A /* HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = AC74BC1A1DCF0E2C005F512A /* HexColors.m */; };
+		AC800C421DD1A6D900FBBFE1 /* MMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC800C411DD1A6D900FBBFE1 /* MMTableViewCell.m */; };
 		AC803DC11DCC6A890088FBE0 /* ParagraphStyleTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC803DC01DCC6A890088FBE0 /* ParagraphStyleTextView.m */; };
 		AC8A7F131DC837F000328CC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F121DC837F000328CC3 /* main.m */; };
 		AC8A7F161DC837F000328CC3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8A7F151DC837F000328CC3 /* AppDelegate.m */; };
@@ -38,6 +39,8 @@
 /* Begin PBXFileReference section */
 		AC74BC191DCF0E2C005F512A /* HexColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexColors.h; sourceTree = "<group>"; };
 		AC74BC1A1DCF0E2C005F512A /* HexColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexColors.m; sourceTree = "<group>"; };
+		AC800C401DD1A6D900FBBFE1 /* MMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableViewCell.h; sourceTree = "<group>"; };
+		AC800C411DD1A6D900FBBFE1 /* MMTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTableViewCell.m; sourceTree = "<group>"; };
 		AC803DBF1DCC6A890088FBE0 /* ParagraphStyleTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParagraphStyleTextView.h; sourceTree = "<group>"; };
 		AC803DC01DCC6A890088FBE0 /* ParagraphStyleTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParagraphStyleTextView.m; sourceTree = "<group>"; };
 		AC8A7F0E1DC837F000328CC3 /* CoreTextDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreTextDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +138,8 @@
 				AC8A7F3A1DC88F6300328CC3 /* data */,
 				AC8A7F171DC837F000328CC3 /* ViewController.h */,
 				AC8A7F181DC837F000328CC3 /* ViewController.m */,
+				AC800C401DD1A6D900FBBFE1 /* MMTableViewCell.h */,
+				AC800C411DD1A6D900FBBFE1 /* MMTableViewCell.m */,
 				AC8A7F661DC89AA800328CC3 /* MFDiagnosticCoreTextData.h */,
 				AC8A7F671DC89AA800328CC3 /* MFDiagnosticCoreTextData.m */,
 				AC8A7F631DC8992900328CC3 /* MFDiagnosticDataParser.h */,
@@ -297,6 +302,7 @@
 				AC8A7F511DC8930E00328CC3 /* NSString+Width.m in Sources */,
 				AC8A7F611DC8964800328CC3 /* MFTextRunDelegate.m in Sources */,
 				AC8A7F411DC88F6300328CC3 /* MFCustomerDiagnosticLogic.m in Sources */,
+				AC800C421DD1A6D900FBBFE1 /* MMTableViewCell.m in Sources */,
 				AC8A7F681DC89AA800328CC3 /* MFDiagnosticCoreTextData.m in Sources */,
 				AC8A7F131DC837F000328CC3 /* main.m in Sources */,
 				AC8A7F5F1DC8964800328CC3 /* MFFrameParserConfig.m in Sources */,
