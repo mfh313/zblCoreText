@@ -695,13 +695,25 @@
                                "realMatch": "B",
                                "imageName": "",
                                "imageUrl": "",
-                               "contentDescription": "B、156-165厘米"
+                               "contentDescription": "B、156-159厘米"
                                },
                                {
                                "realMatch": "C",
                                "imageName": "",
                                "imageUrl": "",
-                               "contentDescription": "C、166厘米以上"
+                               "contentDescription": "C、160-165厘米"
+                               },
+                               {
+                               "realMatch": "D",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "D、166-169厘米"
+                               },
+                               {
+                               "realMatch": "E",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "E、170厘米以上"
                                }
                                ]
                   },
@@ -717,19 +729,31 @@
                                "realMatch": "A",
                                "imageName": "",
                                "imageUrl": "",
-                               "contentDescription": "A、100斤及以下"
+                               "contentDescription": "A、105斤及以下"
                                },
                                {
                                "realMatch": "B",
                                "imageName": "",
                                "imageUrl": "",
-                               "contentDescription": "B、101-130斤"
+                               "contentDescription": "B、106-115斤"
                                },
                                {
                                "realMatch": "C",
                                "imageName": "",
                                "imageUrl": "",
-                               "contentDescription": "C、131斤以上"
+                               "contentDescription": "C、116-125斤"
+                               },
+                               {
+                               "realMatch": "D",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "D、126-135斤"
+                               },
+                               {
+                               "realMatch": "E",
+                               "imageName": "",
+                               "imageUrl": "",
+                               "contentDescription": "E、136斤及以上"
                                }
                                ]
                   },

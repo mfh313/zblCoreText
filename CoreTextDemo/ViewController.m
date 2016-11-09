@@ -151,9 +151,15 @@
     cellView.frame = CGRectMake(10, 0, CGRectGetWidth(cell.contentView.bounds) - 20, CGRectGetHeight(cell.contentView.bounds));
     cellView.data = data;
     
-    [cellView setNeedsDisplay];
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MMTableViewCell *iCell = (MMTableViewCell *)cell;
+    MFCoreTextView *cellView = (MFCoreTextView *)iCell.m_subContentView;
+    [cellView setNeedsDisplay];
 }
 
 - (void)didReceiveMemoryWarning {

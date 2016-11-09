@@ -129,9 +129,9 @@
             UIColor *imageRectColor = [UIColor clearColor];
             UIColor *contentDescriptionRectColor = [UIColor clearColor];
             if ([dataItem.itemType isEqualToString:MFDiagnosticTypeKeyString]) {
-                delegateBoundsColor = [UIColor redColor];
-                imageRectColor = [UIColor grayColor];
-                contentDescriptionRectColor = [UIColor lightGrayColor];
+                delegateBoundsColor = [UIColor clearColor];
+                imageRectColor = [UIColor clearColor];
+                contentDescriptionRectColor = [UIColor clearColor];
             }
             //填充颜色
             CGContextSetFillColorWithColor(context, delegateBoundsColor.CGColor);
